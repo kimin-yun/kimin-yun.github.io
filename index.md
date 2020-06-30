@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Kimin Yun
-subtitle: Artificial Intelligence Research Laboratory, ETRI
+subtitle: Visual Intelligence Research Section, ETRI
 ---
 
 <br/>
