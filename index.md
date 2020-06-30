@@ -1,8 +1,7 @@
 ---
 layout: page
-title: Cloud Researcher
+title: Kimin Yun
 subtitle: Artificial Intelligence Research Laboratory, ETRI
-cover-img: /assets/img/itu-seokho-m4.jpg
 ---
 
 <br/>
