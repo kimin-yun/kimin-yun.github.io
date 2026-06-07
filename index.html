@@ -7,8 +7,8 @@
   <meta name="author" content="Kimin Yun">
   <style>
     :root{
-      --ink:#222; --muted:#666; --line:#e7e1d6; --bg:#faf8f3; --surface:#fff;
-      --link:#1772d0; --hover:#f09228;
+      --ink:#222; --muted:#666; --line:#e4e8ee; --bg:#f6f8fb; --surface:#fff;
+      --link:#0066a6; --hover:#f09228;
       --maxw:860px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -18,21 +18,21 @@
     a:hover{color:var(--hover)}
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 
-    nav{position:sticky;top:0;z-index:10;background:rgba(250,248,243,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+    nav{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
     .nav-inner{max-width:var(--maxw);margin:0 auto;padding:11px 22px;display:flex;align-items:baseline;gap:15px;flex-wrap:wrap}
     .brand{font-weight:700;font-size:16px;color:var(--ink);margin-right:auto}
     .nav-inner a{font-size:14px;color:var(--muted)}
     .nav-inner a:hover{color:var(--hover)}
 
     header{padding:42px 0 26px}
-    .top{display:flex;gap:30px;align-items:flex-start}
+    .top{display:flex;gap:30px;align-items:center}
     .top .txt{flex:1}
     h1{font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px}
     h1 .kr{font-weight:400;color:var(--muted);font-size:18px}
     .sub{color:var(--muted);font-size:15px;margin-bottom:16px}
     .top p{margin-bottom:11px}
     .photo{width:170px;flex:none;text-align:center}
-    .photo img{width:150px;height:150px;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
+    .photo img{width:165px;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:62% 38%;border-radius:14px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(0,0,0,.12)}
     .links-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
     .links-row a,.links-row .email{font-size:13.5px;font-weight:700;padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);transition:all .18s}
     .links-row a:hover{border-color:var(--link);color:var(--link);transform:translateY(-1px)}
@@ -45,7 +45,7 @@
 
     .news div.n{display:flex;gap:14px;padding:7px 0}
     .news .d{color:var(--muted);font-size:13px;width:66px;flex:none;font-variant-numeric:tabular-nums}
-    .news .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.02em;padding:1px 7px;border-radius:5px;margin-right:8px;background:#e7f0fb;color:var(--link);vertical-align:middle}
+    .news .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.02em;padding:1px 7px;border-radius:5px;margin-right:8px;background:#e3eef5;color:var(--link);vertical-align:middle}
     .news .badge.ev{background:#fdeede;color:var(--hover)}
 
     /* Projects — cards */
@@ -110,7 +110,7 @@
     .lk{font-size:13.5px;margin-top:3px}
     .ba{color:#c0392b;font-weight:700}
     .chip{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.02em;padding:1px 7px;border-radius:4px;vertical-align:middle;margin-left:2px}
-    .chip.j{background:#e7f0fb;color:#1772d0}
+    .chip.j{background:#e3eef5;color:#0066a6}
     .chip.c{background:#fdeede;color:#c9741f}
     .chip.g{background:#e7f3ec;color:#2e7d4f}
     .chip.p{background:#f0efec;color:#8a8a8a}
@@ -144,7 +144,7 @@
       <p>I received my B.S. (2010) and integrated M.S./Ph.D. (2017) in Electrical and Computer Engineering from <a href="https://ece.snu.ac.kr/en">Seoul National University</a>, advised by <a href="https://pil.snu.ac.kr/home">Prof. Jin Young Choi</a>.</p>
       <div class="links-row"><span class="email">kimin.yun (at) etri.re.kr</span><a href="data/CV_kmyun.pdf">CV</a><a href="https://scholar.google.co.kr/citations?user=fcVfLCkAAAAJ">Google Scholar</a><a href="https://www.ust.ac.kr/prog/major/kor/sub03_03_04/all/view.do?majorNo=71&kind=professor&empNo=g7eyOucZusVpN0z6VYo0JA==">UST (KR)</a></div>
     </div>
-    <div class="photo"><img src="data/kimin_profile.jpg" alt="Kimin Yun"></div>
+    <div class="photo"><img src="data/kmy_spain.jpg" alt="Kimin Yun"></div>
   </div></header>
 
   <section id="news"><div class="wrap">
@@ -236,7 +236,7 @@
 
     <div class="yhdr">2025</div>
     <div class="pub"><img src="data/25-access-cot.jpeg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/11223182">Multi-Agent Visual Reasoning for Out-of-Distribution Detection in Complex Road Environments</a><div class="au">Jeonghyo Song, <b>Kimin Yun</b>, Dae Ung Jo, Jinyoung Kim, Youngjoon Yoo. <span class="vn">IEEE Access (SCIE)</span>, 2025 <span class="chip j">Journal</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/11223182">Paper</a></div></div></div>
-    <div class="pub"><img src="data/25-icce.jpg" alt=""><div><span class="pt">Reasoning-augmented Vision-Language Models for Improved Competency in Scene Text Recognition</span><div class="au">Minjae Bang*, Juhyeon Han*, Yuseok Bae, Sunok Kim†, <b>Kimin Yun†</b>. <span class="vn">ICCE-Asia</span>, 2025 <span class="chip c">Conf.</span> · * equal (ETRI/UST internship) · † corresponding</div></div></div>
+    <div class="pub"><img src="data/25-icce.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/11263773">Reasoning-augmented Vision-Language Models for Improved Competency in Scene Text Recognition</a><div class="au">Minjae Bang*, Juhyeon Han*, Yuseok Bae, Sunok Kim†, <b>Kimin Yun†</b>. <span class="vn">ICCE-Asia</span>, 2025 <span class="chip c">Conf.</span> · * equal (ETRI/UST internship) · † corresponding</div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/11263773">Paper</a></div></div></div>
     <div class="pub"><img src="data/25-TSA.jpeg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/11149799">Task-Adaptive Open-Set Detection with Prompt-Tuned Adaptors</a><div class="au"><b>Kimin Yun</b>, Kangmin Bae, Yuseok Bae. <span class="vn">IEEE AVSS</span>, 2025 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/11149799">Paper</a></div></div></div>
     <div class="pub"><img src="data/25-cot.jpeg" alt=""><div><a class="pt" href="https://arxiv.org/abs/2507.03984">CoT-Segmenter: Enhancing OOD Detection in Dense Road Scenes via Chain-of-Thought Reasoning</a><div class="au">Jeonghyo Song, <b>Kimin Yun</b>, DaeUng Jo, Jinyoung Kim, Youngjoon Yoo. <span class="vn">IEEE AVSS</span>, 2025 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/2507.03984">arXiv</a></div></div></div>
     <div class="pub"><img src="data/25-uncer.jpeg" alt=""><div><a class="pt" href="https://arxiv.org/abs/2507.18106">Distributional Uncertainty for Out-of-Distribution Detection</a><div class="au">JinYoung Kim, DaeUng Jo, <b>Kimin Yun</b>, Jeonghyo Song, Youngjoon Yoo. <span class="vn">IEEE AVSS</span>, 2025 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/2507.18106">arXiv</a></div></div></div>
@@ -287,6 +287,7 @@
     <div class="pub"><img src="data/16-pedestrian.png" alt=""><div><a class="pt" href="https://openreview.net/forum?id=S1N49t-uZr">Density-Aware Pedestrian Proposal Networks for Robust People Detection in Crowded Scenes</a><div class="au">Sangdoo Yun, <b>Kimin Yun</b>, Jongwon Choi, Jin Young Choi. <span class="vn">ECCV Workshop on Crowd Understanding</span>, 2016 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://openreview.net/forum?id=S1N49t-uZr">Paper</a></div></div></div>
 
     <div class="yhdr">2015</div>
+    <div class="pub"><div class="noimg">ICCV-W</div><div><span class="pt">The Visual Object Tracking VOT2015 Challenge Results</span><div class="au">M. Kristan, et al. (incl. <b>Kimin Yun</b>). <span class="vn">ICCV Workshop (VOT2015)</span>, 2015 <span class="chip c">Conf.</span></div></div></div>
     <div class="pub"><img src="data/15-fp_sampling.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/7351738">Robust and Fast Moving Object Detection in a Non-Stationary Camera via Foreground Probability based Sampling</a><div class="au"><b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE ICIP</span>, 2015 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/7351738">Paper</a></div></div></div>
     <div class="pub"><img src="data/15-ptztrack.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/7301754">Robust Pan-Tilt-Zoom Tracking via Optimization Combining Motion Features and Appearance Correlations</a><div class="au">ByeongJu Lee, <b>Kimin Yun</b>, Jongwon Choi, Jin Young Choi. <span class="vn">IEEE AVSS</span>, 2015 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/7301754">Paper</a></div></div></div>
     <div class="pub"><img src="data/15-rgb2gray.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/7351388">Gradient Preserving RGB-to-Gray Conversion using Random Forest</a><div class="au">ByeongJu Lee, Jongwon Choi, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE ICIP</span>, 2015 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/7351388">Paper</a></div></div></div>
@@ -355,6 +356,12 @@
     <div class="row"><span class="pt">다중 카메라 입력 인식 모델을 위한 배치 추론 및 이벤트 알람 전송 프레임워크</span><div class="au">송길재, <b>윤기민</b>. <span class="vn">한국컴퓨터종합학술대회 (KCC)</span>, 2022</div></div>
     <div class="row"><span class="pt">동적 카메라 동적 물체 탐지를 위한 세밀 배경 학습법</span><div class="au"><b>윤기민</b>. <span class="vn">영상 처리 및 이해에 관한 워크샵 (IPIU)</span>, 2019</div></div>
     <div class="row"><span class="pt">행동 이해용 학습 데이터 생성을 위한 어노테이션 도구 개발</span><div class="au">서정민, <b>윤기민</b>. <span class="vn">한국통신학회 하계종합학술발표회</span>, 2018</div></div>
+    <div class="row"><span class="pt">움직임 상호작용 모델을 통한 군중 폭력 상황 감지</span><div class="au"><b>윤기민</b>. <span class="vn">대한전자공학회 학술대회</span>, 2015</div></div>
+    <div class="row"><span class="pt">감시 영상의 사후 분석을 위한 이벤트 요약 및 분석 애니메이션 기술</span><div class="au"><b>윤기민</b>. <span class="vn">대한전자공학회 학술대회</span>, 2012</div></div>
+    <div class="row"><span class="pt">감시 영상을 위한 효율적인 물체 기반 동영상 축약 기술</span><div class="au"><b>윤기민</b>. <span class="vn">정보 및 제어 논문집</span>, 2011</div></div>
+    <div class="row"><span class="pt">광역 가중 LKT 방법을 이용한 비디오 안정화 기법</span><div class="au"><b>윤기민</b>. <span class="vn">정보 및 제어 논문집</span>, 2011</div></div>
+    <div class="row"><span class="pt">적분 투영 이미지와 쏠림 현상 지표를 이용한 안정적인 비디오 안정화 기술</span><div class="au"><b>윤기민</b>. <span class="vn">대한전자공학회 학술대회</span>, 2010</div></div>
+    <div class="row"><span class="pt">Bit-plane 상에서의 강인한 국소 패치 매칭 기법을 이용한 비디오 안정화</span><div class="au"><b>윤기민</b>. <span class="vn">대한전자공학회 학술대회</span>, 2010</div></div>
   </div></section>
 
   <section id="awards"><div class="wrap">
