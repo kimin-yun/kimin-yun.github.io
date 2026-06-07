@@ -76,8 +76,10 @@
     a.thumb{display:block;cursor:pointer}
     .ytmodal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);padding:24px}
     .ytmodal.open{display:flex}
-    .ytmodal .box{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-    .ytmodal iframe{width:100%;height:100%;border:0;display:block}
+    .ytmodal .box{position:relative;width:min(960px,92vw);background:#000;border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .ytmodal .box::before{content:"";display:block;padding-top:56.25%}
+    .ytmodal #ytFrame{position:absolute;inset:0}
+    .ytmodal #ytFrame iframe{width:100%;height:100%;border:0;display:block}
     .ytmodal .x{position:absolute;top:-38px;right:0;color:#fff;font-size:24px;line-height:1;cursor:pointer;background:none;border:0;padding:4px}
     .ytmodal .ext{position:absolute;top:-36px;left:0;color:#fff;font-size:13px;opacity:.85}
 
@@ -181,12 +183,12 @@
         <div class="card-b"><h4>Illegal Dumping Detection</h4><span class="kr">불법 쓰레기 투기 행위 탐지</span><a class="ph" href="https://youtu.be/v20VkzNNgKI" target="_blank" rel="noopener" data-yt="v20VkzNNgKI">▶ Watch demo</a></div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="data/21-fallen.jpg" alt="Fallen person detection"><div class="play"><span>▶</span></div></div>
-        <div class="card-b"><h4>Fallen Person Detection</h4><span class="kr">쓰러진 사람 탐지 · 공공 CCTV 실증</span><span class="ph">▶ YouTube (add link)</span></div>
+        <a class="thumb" href="https://youtu.be/LOFmzgrKMcM" target="_blank" rel="noopener" data-yt="LOFmzgrKMcM"><img src="data/21-fallen.jpg" alt="Fallen person detection"><div class="play"><span>▶</span></div></a>
+        <div class="card-b"><h4>Fallen Person Detection</h4><span class="kr">쓰러진 사람 탐지 · 공공 CCTV 실증</span><a class="ph" href="https://youtu.be/LOFmzgrKMcM" target="_blank" rel="noopener" data-yt="LOFmzgrKMcM">▶ Watch demo</a></div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="data/14-vsb.png" alt="Banner understanding"><div class="play"><span>▶</span></div></div>
-        <div class="card-b"><h4>Banner Understanding</h4><span class="kr">현수막 이해</span><span class="ph">▶ YouTube (add link)</span></div>
+        <a class="thumb" href="https://youtu.be/AD9PCUw1D9Y" target="_blank" rel="noopener" data-yt="AD9PCUw1D9Y"><img src="data/banner.png" alt="Banner understanding"><div class="play"><span>▶</span></div></a>
+        <div class="card-b"><h4>Banner Understanding</h4><span class="kr">현수막 이해</span><a class="ph" href="https://youtu.be/AD9PCUw1D9Y" target="_blank" rel="noopener" data-yt="AD9PCUw1D9Y">▶ Watch demo</a></div>
       </div>
     </div>
   </div></section>
@@ -194,7 +196,7 @@
   <section id="group"><div class="wrap">
     <h2>Group &amp; Students</h2><div class="hr"></div>
     <div class="gi">
-      <p>I advise M.S. and Ph.D. students in Artificial Intelligence at UST, and supervise research interns at ETRI working on computer vision for real-world impact. I'm always looking for motivated students interested in vision, OOD / uncertainty, and surveillance AI. &nbsp;<a class="cta" id="emailBtn" href="#">Prospective students → email me</a></p>
+      <p>I advise M.S. and Ph.D. students in Artificial Intelligence at UST, and supervise research interns at ETRI working on computer vision for real-world impact. I'm always looking for motivated students interested in vision, OOD / uncertainty, and surveillance AI. Prospective students are welcome to reach out — <b>kimin.yun (at) etri.re.kr</b>.</p>
     </div>
 
     <div class="subhead">Advised Students</div>
@@ -205,8 +207,8 @@
 
     <div class="subhead">Alumni · Research Interns</div>
     <div class="alumni">
-      <div class="al"><span class="y">2026</span><div><span class="nm">김소정</span> <span class="tg">— Scene text recognition (vision-language models)</span></div></div>
-      <div class="al"><span class="y">2025</span><div><span class="nm">방민재 · 한주현</span> <span class="tg">— Scene text recognition (ICCE-Asia)</span></div></div>
+      <div class="al"><span class="y">2026</span><div><span class="nm">김소정</span> <span class="tg">— Scene text recognition</span></div></div>
+      <div class="al"><span class="y">2025</span><div><span class="nm">방민재 · 한주현</span> <span class="tg">— Scene text recognition</span></div></div>
       <div class="al"><span class="y">2024</span><div><span class="nm">송정훈</span> <span class="tg">— Out-of-distribution detection</span></div></div>
       <div class="al"><span class="y">2024</span><div><span class="nm">조재호</span> <span class="tg">— Open-set detection</span></div></div>
       <div class="al"><span class="y">2023</span><div><span class="nm">부원국</span> <span class="tg">— Fallen-person detection</span></div></div>
@@ -394,7 +396,6 @@
   <div class="ytmodal" id="ytModal"><div class="box"><a class="ext" id="ytExt" href="#" target="_blank" rel="noopener">↗ Watch on YouTube</a><button class="x" id="ytClose" aria-label="Close">✕</button><div id="ytFrame"></div></div></div>
 
   <script>
-    (function(){var u='kimin.yun',d='etri.re.kr';var b=document.getElementById('emailBtn');if(b){b.href='mailto:'+u+'@'+d;}})();
     (function(){
       var modal=document.getElementById('ytModal'),frame=document.getElementById('ytFrame'),ext=document.getElementById('ytExt');
       function open(id){
