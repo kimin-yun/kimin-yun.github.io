@@ -1,2 +1,28 @@
 .cursorindexingignore
 .specstory/
+
+# OS / editor
+.DS_Store
+
+# OMC working state
+.omc/
+
+# LaTeX build artifacts
+.cvbuild/
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.xdv
+*.synctex.gz
+*.toc
+
+# local design scratch & backups (kept on disk, not published)
+design1_classic.html
+design2_mono.html
+design3_editorial.html
+mockup.html
+index_old.html
+variant_editorial.html
+stylesheet_old.css

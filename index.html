@@ -1,1520 +1,383 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-  <title>Kimin Yun (윤기민) </title>
-  <meta name="author" content="Kimin Yun">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kimin Yun (윤기민)</title>
+  <meta name="author" content="Kimin Yun">
+  <style>
+    :root{
+      --ink:#222; --muted:#666; --line:#e7e1d6; --bg:#faf8f3; --surface:#fff;
+      --link:#1772d0; --hover:#f09228;
+      --maxw:860px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:64px}
+    body{font-family:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:var(--link);text-decoration:none}
+    a:hover{color:var(--hover)}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    nav{position:sticky;top:0;z-index:10;background:rgba(250,248,243,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+    .nav-inner{max-width:var(--maxw);margin:0 auto;padding:11px 22px;display:flex;align-items:baseline;gap:15px;flex-wrap:wrap}
+    .brand{font-weight:700;font-size:16px;color:var(--ink);margin-right:auto}
+    .nav-inner a{font-size:14px;color:var(--muted)}
+    .nav-inner a:hover{color:var(--hover)}
+
+    header{padding:42px 0 26px}
+    .top{display:flex;gap:30px;align-items:flex-start}
+    .top .txt{flex:1}
+    h1{font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px}
+    h1 .kr{font-weight:400;color:var(--muted);font-size:18px}
+    .sub{color:var(--muted);font-size:15px;margin-bottom:16px}
+    .top p{margin-bottom:11px}
+    .photo{width:170px;flex:none;text-align:center}
+    .photo img{width:150px;height:150px;object-fit:cover;border-radius:50%;border:1px solid var(--line)}
+    .links-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+    .links-row a,.links-row .email{font-size:13.5px;font-weight:700;padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);transition:all .18s}
+    .links-row a:hover{border-color:var(--link);color:var(--link);transform:translateY(-1px)}
+    .links-row .email{color:var(--muted);cursor:default}
+
+    h2{font-size:20px;font-weight:700;margin:0}
+    .hr{height:2px;background:var(--ink);width:38px;margin:6px 0 18px}
+    section{padding:24px 0;border-top:1px solid var(--line)}
+    .blurb{color:#444;max-width:70ch}
+
+    .news div.n{display:flex;gap:14px;padding:7px 0}
+    .news .d{color:var(--muted);font-size:13px;width:66px;flex:none;font-variant-numeric:tabular-nums}
+    .news .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.02em;padding:1px 7px;border-radius:5px;margin-right:8px;background:#e7f0fb;color:var(--link);vertical-align:middle}
+    .news .badge.ev{background:#fdeede;color:var(--hover)}
+
+    /* Projects — cards */
+    .programs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+    .program{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 22px rgba(0,0,0,.05);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+    .program::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--link)}
+    .program:nth-child(2)::before{background:var(--hover)}
+    .program:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.05),0 16px 34px rgba(0,0,0,.1)}
+    .program .tag{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .program h3{font-size:18px;margin:5px 0 7px}
+    .program p{color:var(--muted);font-size:13.5px;margin-bottom:11px}
+    .program .links a{font-size:13.5px;font-weight:700}
+    .impact-label{font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:4px 0 14px}
+    .impact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 22px rgba(0,0,0,.05);transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.05),0 16px 34px rgba(0,0,0,.1)}
+    .thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:#f3f3f3}
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .card:hover .thumb img{transform:scale(1.05)}
+    .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(transparent 40%,rgba(0,0,0,.5))}
+    .play span{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:var(--hover);font-size:15px;padding-left:3px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    .card-b{padding:12px 14px 14px}
+    .card-b h4{font-size:14.5px;font-weight:700;margin-bottom:2px}
+    .card-b .kr{font-size:12px;color:var(--muted)}
+    .card-b .ph{display:block;margin-top:8px;color:var(--muted);font-size:12px;opacity:.75;font-weight:700}
+
+    /* Group — advised slots + alumni roster */
+    .gi p{color:#444;margin-bottom:12px;max-width:72ch}
+    .subhead{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hover);margin:18px 0 10px}
+    .cta{display:inline-block;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;background:var(--link);color:#fff}
+    .cta:hover{background:var(--ink);color:#fff}
+    .slots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .slot{display:flex;align-items:center;gap:12px;border:1px dashed var(--line);border-radius:10px;padding:14px 16px;color:var(--muted);font-size:13.5px;background:#fafafa}
+    .slot .av{width:40px;height:40px;border-radius:50%;background:#fff;border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:11px;flex:none}
+    .slot b{color:var(--ink)}
+    .alumni{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+    .al{display:grid;grid-template-columns:46px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px;align-items:baseline}
+    .al .y{color:var(--muted);font-weight:700;font-size:12.5px;font-variant-numeric:tabular-nums}
+    .al .nm{font-weight:700}
+    .al .tg{color:var(--muted)}
+
+    /* Publications */
+    .pub{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+    .pub:last-child{border-bottom:0}
+    .pub img{width:120px;height:80px;object-fit:cover;flex:none;border:1px solid var(--line);background:#fafafa}
+    .pt{font-weight:700}
+    .au{color:#444;font-size:14px;margin-top:2px}
+    .au b{color:var(--ink)}
+    .vn{font-style:italic;color:var(--muted)}
+    .lk{font-size:13.5px;margin-top:3px}
+    .ba{color:#c0392b;font-weight:700}
+    .chip{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.02em;padding:1px 7px;border-radius:4px;vertical-align:middle;margin-left:2px}
+    .chip.j{background:#e7f0fb;color:#1772d0}
+    .chip.c{background:#fdeede;color:#c9741f}
+    .chip.g{background:#e7f3ec;color:#2e7d4f}
+    .chip.p{background:#f0efec;color:#8a8a8a}
+    .yhdr{font-size:16px;font-weight:700;color:var(--muted);margin:20px 0 2px;border-bottom:1px solid var(--line);padding-bottom:3px}
+    .more{color:var(--muted);font-size:13px;padding-top:14px;text-align:center}
+
+    /* Domestic / Patents text rows */
+    .row{padding:11px 0;border-bottom:1px solid var(--line)}
+    .row:last-child{border-bottom:0}
+    .row .pt{font-weight:700;font-size:14.5px}
+    .row .au{margin-top:2px}
+
+    .awards{padding-left:18px}
+    .awards>li{margin-bottom:8px}
+    .awards .kr{display:block;color:var(--muted);font-size:12.5px}
+    footer{border-top:1px solid var(--line);padding:20px 0 44px;color:var(--muted);font-size:12.5px;text-align:right}
+    @media(max-width:680px){.top{flex-direction:column-reverse}.photo{width:100%}.pub img{width:92px;height:64px}.programs,.impact-cards,.slots,.alumni{grid-template-columns:1fr}}
+  </style>
 </head>
-
 <body>
-  <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr style="padding:0px">
-                <td style="padding:2.5%;width:63%;vertical-align:middle">
-                  <p style="text-align:center">
-                    <name>Kimin Yun</name>
-                  </p>
-                  <p>I am a Principal researcher at <a href="https://etri-visualintelligence.github.io/">Visual
-                      Intelligence Lab</a> at the <a href="https://www.etri.re.kr/eng/main/main.etri">Electronics and
-                      Telecommunications Research Institute (ETRI)</a> in South Korea. Since 2025, I have also been
-                    serving as an Associate Professor of Artificial Intelligence at the <a
-                      href="https://www.ust.ac.kr/eng/">University of Science and Technology (UST)</a>.
-                  </p>
-                  <p>
-                    At ETRI, I involve national R&D projects focusing on both foundational technologies and applied
-                    research in computer vision and machine learning. My research interest is to improve human life
-                    through smarter, more beneficial vision systems, with an emphasis on creating practical applications
-                    for real-world challenges.
-                  </p>
-                  <p>
-                    I received my Bachelor’s degree in Electrical and Computer Engineering from <a
-                      href="https://ece.snu.ac.kr/en">Seoul National University</a> in 2010. I then completed an
-                    integrated Master's and Ph.D. program in Electrical and Computer Engineering at <a
-                      href="https://ece.snu.ac.kr/en">Seoul National University</a>, under the supervision of <a
-                      href="https://pil.snu.ac.kr/home">Prof. Jin Young Choi</a>, in 2017.
-                  </p>
-                  <p style="text-align:center">
-                    <a href="mailto:kimin.yun@etri.re.kr">Email</a>: kimin.yun (at) etri.re.kr &nbsp/&nbsp
-                    <a href="data/CV_kmyun.pdf">CV</a> &nbsp/&nbsp
-                    <a href="https://scholar.google.co.kr/citations?user=fcVfLCkAAAAJ">Google Scholar</a> &nbsp/&nbsp
-                    <a
-                      href="https://www.ust.ac.kr/prog/major/kor/sub03_03_04/all/view.do?majorNo=71&kind=professor&empNo=g7eyOucZusVpN0z6VYo0JA==">UST
-                      (Korean)</a> &nbsp
-                  </p>
-                </td>
-                <td style="padding:2.5%;width:40%;max-width:40%">
-                  <img style="width:100%;max-width:100%" alt="profile photo" src="data/kimin_profile.jpg"
-                    class="hoverZoomLink">
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Research</heading>
-                  <p>
-                    My work focuses on addressing real-world challenges through machine learning and computer vision,
-                    with particular emphasis on developing practical applications (e.g., surveillance camera
-                    applications). In both my research at ETRI and teaching at UST, I strive to bridge the gap between
-                    theoretical advancements and their practical implementations.
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-
-
-                                            <!-- ICPR 26 -->
-                              <tr>
-                                <td style="padding:20px;width:25%;vertical-align:middle">
-                                  <img src="data/26-icpr.png" alt="access-26" width="160">
-                                </td>
-                                <td style="padding:20px;width:75%;vertical-align:middle">
-                                  <a href="" id="access-26">
-                                    <papertitle>Dynamic Augmentation Strategy Selection for Incremental Object Detection</papertitle>
-                                  </a>
-                                  <br>
-                                  Yujeong Oh, Taehoon Kim, Mingyu Lee, <strong>Kimin Yun†</strong>, Jongwon Choi†                                  
-                                  <br>
-                                  <em>International Conference on Pattern Recognition (ICPR)</em>, 2026
-                                  <br>
-                                  <a href="">Paper</a>
-                                  <p>
-                                    † Co-Corresponding authors.
-                                  </p>
-                                </td>
-                              </tr>
-
-
-              
-                              <!-- Access 26 -->
-                              <tr>
-                                <td style="padding:20px;width:25%;vertical-align:middle">
-                                  <img src="data/26-acc-ood.jpeg" alt="access-26" width="160">
-                                </td>
-                                <td style="padding:20px;width:75%;vertical-align:middle">
-                                  <a href="https://ieeexplore.ieee.org/abstract/document/11308081" id="access-26">
-                                    <papertitle>Zero-Shot Anomaly Segmentation via Query-Level Uncertainty Analysis</papertitle>
-                                  </a>
-                                  <br>
-                                  <strong>Kimin Yun†</strong>, Yuseok Bae
-                                  <br>
-                                  <em>IEEE Access (SCIE)</em>, 2026
-                                  <br>
-                                  <a href="https://ieeexplore.ieee.org/abstract/document/11308081">Paper</a>
-                                  <p>
-                                    † Corresponding author.
-                                  </p>
-                                </td>
-                              </tr>
-
-
-
-                <!-- ETRIJ 26 -->
-                <tr>
-                  <td style="padding:20px;width:25%;vertical-align:middle">
-                    <img src="data/26-ETRIJ.jpeg" alt="ETRIJ-26" width="160">
-                  </td>
-                  <td style="padding:20px;width:75%;vertical-align:middle">
-                    <a href="" id="etrij26">
-                      <papertitle>Fast Adversarial Robustness Recovery against Model Parameter
-                        Exposure through Hopfield-type Neural ODEs</papertitle>
-                    </a>
-                    <br>
-                    Yu-Hyun Shin*, <strong>Kimin Yun*,†</strong>, Yuseok Bae
-                    <br>
-                    <em>ETRI Journal (SCIE)</em>, 2026 (accepted)
-                    <br>
-                    Paper
-                    <p>
-                      * Equal contribution.
-                      † Corresponding author.
-                    </p>
-                  </td>
-                </tr>
-
-
-
-                  <!-- IEEE TMM'26 -->
-                  <tr>
-                    <td style="padding:20px;width:25%;vertical-align:middle">
-                      <img src="data/26-TMM.png" alt="TMM-25" width="160">
-                    </td>
-                    <td style="padding:20px;width:75%;vertical-align:middle">
-                      <a href="https://arxiv.org/abs/2602.03071" id="tmm26">
-                        <papertitle>Finding Optimal Video Moment without Training: Gaussian Boundary Optimization for Weakly Supervised Video Grounding</papertitle>
-                      </a>
-                      <br>
-                      <a href="https://scholar.google.com/citations?user=wlhSowsAAAAJ&hl=ko">Sunoh Kim</a>, <strong>Kimin Yun</strong>, <a href="https://scholar.google.com/citations?user=8pAHR7AAAAAJ&hl=ko">Daeho Um</a>
-                      <br>
-                      <em>IEEE Transactions on Multimedia (SCIE)</em>, 2026
-                      <br>
-                      <a href="https://arxiv.org/abs/2602.03071">Paper</a>
-                      <p>
-                      </p>
-                    </td>
-                  </tr>
-
-
-                  
-
-
-              <!-- IEEE ACCESS'25 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/25-access-cot.jpeg" alt="access-25" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/abstract/document/11223182" id="access25-cot">
-                    <papertitle>Multi-Agent Visual Reasoning for Out-of-Distribution Detection in Complex Road
-                      Environments</papertitle>
-                  </a>
-                  <br>
-                  Jeonghyo Song, <strong>Kimin Yun</strong>, Dae Ung Jo, Jinyoung Kim, Youngjoon Yoo
-                  <br>
-                  <em>IEEE Access (SCIE)</em>, 2025
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/abstract/document/11223182">Paper</a>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!-- ICCE-asia'25 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/25-icce.jpg" alt="icce-25" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="" id="icce">
-                    <papertitle>Reasoning-augmented Vision-Language Models for Improved Competency in Scene Text
-                      Recognition</papertitle>
-                  </a>
-                  <br>
-                  Minjae Bang*, Juhyeon Han*, Yuseok Bae, Sunok Kim†,
-                  <strong>Kimin Yun†</strong>
-                  <br>
-                  <em>International Conference On Consumer Electronics (ICCE) Asia</em>, 2025
-                  <br>
-                  <p>
-                    * Equal contribution. Work done during ETRI and UST internship.
-                    † Corresponding author.
-                  </p>
-                </td>
-              </tr>
-
-
-              <!-- AVSS'25 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/25-TSA.jpeg" alt="avss_ta" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/11149799" id="avss_ta">
-                    <papertitle>Task-Adaptive Open-Set Detection with Prompt-Tuned Adaptors</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Kangmin Bae,
-                  Yuseok Bae
-                  <br>
-                  <em>IEEE International Conference on Advanced Visual and Signal-Based Systems (AVSS)</em>, 2025
-                  <br>
-                </td>
-              </tr>
-
-
-
-              <!-- AVSS'25 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/25-cot.jpeg" alt="arxiv24" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://arxiv.org/abs/2507.03984" id="cot">
-                    <papertitle>CoT-Segmenter: Enhancing OOD Detection in Dense Road Scenes via
-                      Chain-of-Thought Reasoning</papertitle>
-                  </a>
-                  <br>
-                  Jeonghyo Song,
-                  <strong>Kimin Yun</strong>,
-                  DaeUng Jo,
-                  Jinyoung Kim,
-                  Youngjoon Yoo
-                  <br>
-                  <em>IEEE International Conference on Advanced Visual and Signal-Based Systems (AVSS)</em>, 2025
-                  <br>
-                </td>
-              </tr>
-
-              <!-- AVSS'25 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/25-uncer.jpeg" alt="arxiv24" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://arxiv.org/abs/2507.18106" id="avss25_un">
-                    <papertitle>Distributional Uncertainty for Out-of-Distribution Detection</papertitle>
-                  </a>
-                  <br>
-                  JinYoung Kim,
-                  DaeUng Jo,
-                  <strong>Kimin Yun</strong>,
-                  Jeonghyo Song,
-                  Youngjoon Yoo
-                  <br>
-                  <em>IEEE International Conference on Advanced Visual and Signal-Based Systems (AVSS)</em>, 2025
-                  <br>
-                </td>
-              </tr>
-
-
-              <!-- ECCVW'24 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/24-PLM.jpg" alt="arxiv24" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://arxiv.org/abs/2403.09199" id="arxiv24">
-                    <papertitle>Task-Specific Adaptation of Segmentation Foundation Model via Prompt Learning
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.co.kr/citations?user=3belJDEAAAAJ&hl=ko">Hyung-Il Kim*</a>,
-                  <strong>Kimin Yun*</strong>
-                  Jun-Seok Yun,
-                  Yuseok Bae
-                  <br>
-                  <em>European Conference on Computer Vision Workshop on Out Of Distribution Generalization in Computer
-                    Vision (ECCVW)</em>, 2024
-                  <br>
-                  <a href="https://arxiv.org/abs/2403.09199">arXiv</a>
-                  <p></p>
-                  <p>
-                    * indicates equal contribution.
-                  </p>
-                  </p>
-                </td>
-              </tr>
-
-              <!-- ICTC'24 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/24-ictc.jpg" alt="ictc24" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/abstract/document/10827063" id="ictc24">
-                    <papertitle>Training-Free OOD Object Detection Leveraging Pre-Trained Segmentation Model Competency
-                    </papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun*</strong>
-                  Jeonghoon Song*,
-                  Yuseok Bae
-                  <br>
-                  <em>International Conference on Information and Communication Technology Convergence (ICTC)</em>, 2024
-                  <br>
-                  <p></p>
-                  <p>
-                    * indicates equal contribution.
-                  </p>
-                  </p>
-                </td>
-              </tr>
-
-
-              <!-- ETRIJ 23 -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/23-etrij.jpg" alt="etrij23" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://onlinelibrary.wiley.com/doi/10.4218/etrij.2023-0115" id="etrij23">
-                    <papertitle>Background memory-assisted zero-shot video object segmentation for unmanned aerial and
-                      ground vehicles</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://scholar.google.co.kr/citations?user=3belJDEAAAAJ&hl=ko">Hyung-Il Kim</a>,
-                  Kangmin Bae,
-                  Jinyoung Moon
-                  <br>
-                  <em>ETRI Journal (SCIE)</em>, 2023
-                  <br>
-                  <a href="https://onlinelibrary.wiley.com/doi/10.4218/etrij.2023-0115">Paper</a> /
-                  <a href="https://github.com/kimin-yun/VIBE-H">Binary</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!-- TBIOM -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/22-tbiom_box.png" alt="tbiom22" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://arxiv.org/pdf/2209.07220.pdf" id="tbiom22">
-                    <papertitle>Face Shape-Guided Deep Feature
-                      Alignment for Face Recognition Robust to Face Misalignment</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.co.kr/citations?user=3belJDEAAAAJ&hl=ko">Hyung-Il Kim</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://ivylab.kaist.ac.kr/base/people/people1.php">Yong Man Ro</a>.
-                  <br>
-                  <em>IEEE Transactions
-                    on Biometrics, Behavior, and Identity Science</em>, 2022
-                  <br>
-                  <a href="https://arxiv.org/abs/2209.07220">arXiv</a> /
-                  <a href="bibtex/tbiom22.txt">Bibtex</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        CIKM. swag_22
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/22-swag.jpg" alt="swag_22" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://dl.acm.org/doi/abs/10.1145/3511808.3557463" id="swag_22">
-                    <papertitle>SWAG-Net: Semantic Word-Aware Graph Network for Temporal Video Grounding</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.com/citations?user=wlhSowsAAAAJ&hl=ko">Sunoh Kim</a>,
-                  Taegil Ha,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>ACM International Conference on Information and Knowledge Management (CIKM)</em>, 2022
-                  <br>
-                  <a href="https://dl.acm.org/doi/abs/10.1145/3511808.3557463">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ECCVW22. uncertain_22
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/22-uncertain.jpg" alt="uncertain_22" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://link.springer.com/chapter/10.1007/978-3-031-25085-9_2" id="uncertain_22">
-                    <papertitle>Localization Uncertainty Estimation for Anchor-Free Object Detection</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://youngwanlee.github.io/">Youngwan Lee</a>,
-                  Joong-won Hwang,
-                  <a href="https://scholar.google.co.kr/citations?user=3belJDEAAAAJ&hl=ko">Hyung-Il Kim</a>,
-                  <strong>Kimin Yun</strong>,
-                  Yongjin Kwon,
-                  Yuseok Bae,
-                  <a href="http://www.sungjuhwang.com/">Sung Ju Hwang</a>.
-                  <br>
-                  <em>European Conference on Computer Vision Workshop on Uncertainty Quantification for Computer Vision
-                    (ECCVW)
-                  </em>, 2022
-                  <br>
-                  <a href="https://arxiv.org/abs/2006.15607">arXiv</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-              <!--
-        Sensors. OC_PAR22
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/22-OC_PAR.jpg" alt="OC_PAR22" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://www.mdpi.com/1424-8220/22/17/6626" id="OC_PAR22">
-                    <papertitle>Occluded Pedestrian-Attribute Recognition for Video Sensors Using Group Sparsity
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sites.google.com/view/geonulee">Geonu Lee</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://sites.google.com/view/visual-ai/professor?authuser=0">Jungchan Cho</a>.
-                  <br>
-                  <em>Sensors (SCIE)</em>, 2022
-                  <br>
-                  <a href="https://arxiv.org/abs/2110.08708">arXiv</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        IEEE Aceess. Gating21
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/21-Gating.jpg" alt="Gating21" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9695483&tag=1" id="Gating21">
-                    <papertitle>Gating Mechanism in Deep Neural
-                      Networks for Resource-Efficient Continual Learning</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://jin0316.github.io/HyundongJin.io/">Hyundong Jin</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://vllab.cau.ac.kr/members/professor/">Eunwoo Kim</a>.
-                  <br>
-                  <em>IEEE Access (SCIE)</em>, 2021
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9695483&tag=1">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        Access. vov3d_21
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/21-vov3d.jpg" alt="vov3d_21" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/9638459" id="vov3d_21">
-                    <papertitle>Diverse Temporal
-                      Aggregation and Depthwise Spatiotemporal Factorization for Efficient Video Classification
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://youngwanlee.github.io/">Youngwan Lee</a>,
-                  <a href="https://scholar.google.co.kr/citations?user=3belJDEAAAAJ&hl=ko">Hyung-Il Kim</a>,
-                  <strong>Kimin Yun</strong>,
-                  Jinyoung Moon.
-                  <br>
-                  <em>IEEE Access (SCIE)</em>, 2021
-                  <br>
-                  <a href="https://arxiv.org/abs/2012.00317">arXiv</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-              <!--
-        Access. HOI_21
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/21-HOI.png" alt="HOI_21" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/9360596" id="HOI_21">
-                    <papertitle>Improved Human-Object Interaction
-                      Detection through On-the-Fly Stacked Generalization</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sites.google.com/view/geonulee">Geonu Lee</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://sites.google.com/view/visual-ai/professor?authuser=0">Jungchan Cho</a>.
-                  <br>
-                  <em>IEEE Access (SCIE)</em>, 2021
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/9360596">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        AVSS21. fallen_21
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/21-fallen.jpg" alt="fallen_21" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/9663782" id="fallen_21">
-                    <papertitle>The Dataset and Baseline Models to Detect Human Postural States Robustly against
-                      Irregular Postures</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.com/citations?user=kVp8ctQAAAAJ">Kangmin Bae*</a>,
-                  <strong>Kimin Yun*</strong>,
-                  <a href="https://sites.google.com/view/visual-ai/professor?authuser=0">Jungchan Cho</a>,
-                  Yuseok Bae.
-                  <br>
-                  <em>IEEE Int'l Conf on Advanced Video and Signal-based Surveillance (AVSS)</em>, 2021
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/9663782">Paper</a>
-                  <p></p>
-                  <p>
-                    * indicates equal contribution.
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        AVSS21. pa_ground_21
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/21-pa_ground.jpg" alt="pa_ground_21" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://www.computer.org/csdl/proceedings-article/avss/2021/09663815/1zUZ2axe46s"
-                    id="pa_ground_21">
-                    <papertitle>Position-aware Location Regression Network for Temporal Video Grounding</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.com/citations?user=wlhSowsAAAAJ&hl=ko">Sunoh Kim</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE Int'l Conf on Advanced Video and Signal-based Surveillance (AVSS)</em>, 2021
-                  <br>
-                  <a href="https://arxiv.org/abs/2204.05499">arXiv</a> /
-                  <a href="https://github.com/sunoh-kim/PLRN">GitHub</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-              <!--
-        Access. rotation_pose_20
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/20-rotation_pose.jpg" alt="rotation_pose_20" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/8995541" id="rotation_pose_20">
-                    <papertitle>Robust Human Pose Estimation for
-                      Rotation via Self-Supervised Learning</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Jongyoul Park,
-                  <a href="https://sites.google.com/view/visual-ai/professor?authuser=0">Jungchan Cho</a>.
-                  <br>
-                  <em>IEEE Access (SCIE)</em>, 2020
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/8995541">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        ICPR20. ptz_20
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/20-ptz.jpg" alt="ptz_20" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/9413085" id="ptz_20">
-                    <papertitle>Unsupervised Moving Object Detection through Background Models for PTZ Camera
-                    </papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Hyung-Il Kim,
-                  Kangmin Bae,
-                  Jongyoul Park.
-                  <br>
-                  <em>International Conference on Pattern Recognition (ICPR)</em>, 2020
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/9413085">Paper</a> /
-                  <a href="https://ailb-web.ing.unimore.it/icpr/media/slides/11237.pdf">Slide</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        BMVC20. mtl_20
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/20-mtl.jpg" alt="mtl_20" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://www.bmvc2020-conference.com/conference/papers/paper_0279.html" id="mtl_20">
-                    <papertitle>Anti-Litter Surveillance based on Person Understanding via Multi-task Learning
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.com/citations?user=kVp8ctQAAAAJ">Kangmin Bae*</a>
-                  <strong>Kimin Yun*</strong>,
-                  <a href="https://scholar.google.co.kr/citations?user=3belJDEAAAAJ&hl=ko">Hyung-Il Kim</a>,
-                  <a href="https://youngwanlee.github.io/">Youngwan Lee</a>,
-                  Jongyoul Park.
-                  <br>
-                  <em>British Machine Vision Conference (BMVC)</em>, 2020
-                  <br>
-                  <a href="https://www.bmvc2020-conference.com/assets/papers/0279.pdf">Paper</a>
-                  <p></p>
-                  <p>
-                    * indicates equal contribution.
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ETRIJ. garbage_19
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/19-garbage.jpg" alt="garbage_19" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://onlinelibrary.wiley.com/doi/full/10.4218/etrij.2018-0520" id="garbage_19">
-                    <papertitle>Vision-based Garbage Dumping Action Detection for Real-World Surveillance Platform
-                    </papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Yongjin Kwon,
-                  Sungchan Oh,
-                  Jinyoung Moon,
-                  Jongyoul Park.
-                  <br>
-                  <em>ETRI Journal (SCIE)</em>, 2019 <span style="color: red; "><strong>(Best Paper
-                      Award)</strong></span>
-                  <br>
-                  <a href="https://onlinelibrary.wiley.com/doi/full/10.4218/etrij.2018-0520">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        WACV19. GCNH_19
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/19-GCNH.jpg" alt="GCNH_19" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8659015" id="GCNH_19">
-                    <papertitle>Skeleton-based Action Recognition of People Handling Objects</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://scholar.google.com/citations?user=wlhSowsAAAAJ&hl=ko">Sunoh Kim</a>,
-                  <strong>Kimin Yun</strong>,
-                  Jongyoul Park,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE Winter Conference on Applications of Computer Vision (WACV)</em>, 2019
-                  <br>
-                  <a href="https://arxiv.org/abs/1901.06882">arXiv</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        TNNLS. RL_track_18
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/18-RL_track.jpg" alt="RL_track_18" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/8306309" id="RL_track_18">
-                    <papertitle>Action-Driven Visual Object Tracking with Deep Reinforcement Learning</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>,
-                  <a href="https://www.vilab.cau.ac.kr/">Jongwon Choi</a>,
-                  <a href="https://sites.google.com/view/yjyoo3312/">Youngjoon Yoo</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE Transactions on Neural Networks and Learning Systems (TNNLS) (SCIE)</em>, 2018
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/8306309">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        ICAIC18, dankook18
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/18-dankook.jpg" alt="dankook18" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/8527472" id="dankook18">
-                    <papertitle>Behavior Recognition of a Person in a Daily Video Using Joint Position Information
-                    </papertitle>
-                  </a>
-                  <br>
-                  Jeong-Min Seo,
-                  Haanju Yoo,
-                  <strong>Kimin Yun</strong>,
-                  Hyunil Kim,
-                  <a href="https://sites.google.com/view/mlpalab/about-us/supervisor?authuser=0">Sang-Il Choi</a>.
-                  <br>
-                  <em>IEEE International Conference on Artificial Intelligence and Knowledge Engineering Workshop on AI
-                    Bigdata Cloud Technologies</em>, 2018
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/8527472">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        PRL. SC_MCD_17
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/17-SC_MCD.jpg" alt="SC_MCD_17" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://www.sciencedirect.com/science/article/pii/S0167865517300260" id="SC_MCD_17">
-                    <papertitle>Scene Conditional Background Update for Moving Object Detection in a Moving Camera
-                    </papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://scholar.google.com/citations?user=6jxQqmoAAAAJ">Jongin Lim</a>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>Pattern Recognition Letters (SCIE)</em>, 2017
-                  <br>
-                  <a href="https://www.sciencedirect.com/science/article/pii/S0167865517300260">Paper</a> /
-                  <a href="https://www.youtube.com/watch?v=ZNFZzhQgjkc&ab_channel=officialPIL">Video</a> /
-                  <a href="https://github.com/CansenJIANG/SCBU">Binary</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-              <!--
-        MVA. MIF_17
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/17-MIF.jpg" alt="MIF_17" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://link.springer.com/article/10.1007/s00138-016-0816-0" id="MIF_17">
-                    <papertitle>Motion Interaction Field for Detection of Abnormal Interactions</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://sites.google.com/view/yjyoo3312/">Youngjoon Yoo</a>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>Machine Vision and Applications (SCIE)</em>, 2017
-                  <br>
-                  <a href="https://link.springer.com/article/10.1007/s00138-016-0816-0">Paper</a> /
-                  <a href="https://www.youtube.com/watch?v=YKciFMjzLqQ&ab_channel=officialPIL">Video</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        CVPR17, rltrack_17
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/17-rltrack.jpg" alt="rltrack_17" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf"
-                    id="rltrack_17">
-                    <papertitle>Action-Decision Network for Visual Tracking with Deep Reinforcement Learning
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>,
-                  <a href="https://www.vilab.cau.ac.kr/">Jongwon Choi</a>,
-                  <a href="https://sites.google.com/view/yjyoo3312/">Youngjoon Yoo</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE International Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2017
-                  <br>
-                  <a
-                    href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ICIP17, DMCD_17
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/17-DMCD.jpg" alt="DMCD_17" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/8296597" id="DMCD_17">
-                    <papertitle>Appearance and Motion based Deep Learning Architecture for Moving Object Detection in
-                      Moving Camera</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sites.google.com/view/byeongho-heo/home">Byeongho Heo</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE International Conference on Image Processing (ICIP)</em>, 2017
-                  <br>
-                  <a href="https://sigport.org/sites/default/files/docs/ICIP17_heo_0.pdf">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        ICPR16, car_MCD_16
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/16-car_MCD.png" alt="car_MCD_16" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/7900044" id="car_MCD_16">
-                    <papertitle>Attention-Inspired Moving Object Detection in Monocular Dashcam Videos</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://scholar.google.com/citations?user=6jxQqmoAAAAJ">Jongin Lim</a>,
-                  <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>,
-                  Soo Wan Kim,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>International Conference on Pattern Recognition (ICPR)</em>, 2016
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/7900044">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ECCVW16, pedestrian_16
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/16-pedestrian.png" alt="pedestrian_16" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://openreview.net/forum?id=S1N49t-uZr" id="pedestrian_16">
-                    <papertitle>Density-Aware Pedestrian Proposal Networks for Robust People Detection in Crowded Scenes
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://www.vilab.cau.ac.kr/">Jongwon Choi</a>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>International Workshop on Crowd Understanding in conjuction with ECCV</em>, 2016
-                  <br>
-                  <a href="https://openreview.net/forum?id=S1N49t-uZr">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        CVPR16, path_predict_16
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/16-path_predict.png" alt="path_predict_16" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Yoo_Visual_Path_Prediction_CVPR_2016_paper.pdf"
-                    id="path_predict_16">
-                    <papertitle>Visual Path Prediction in Complex Scenes with Crowded Moving Objects</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sites.google.com/view/yjyoo3312/">Youngjoon Yoo</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>,
-                  Jonghee Hong,
-                  Hawook Jeong,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2016
-                  <br>
-                  <a
-                    href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Yoo_Visual_Path_Prediction_CVPR_2016_paper.pdf">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-
-              <!--
-        ICIP15, fp_sampling_15
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/15-fp_sampling.jpg" alt="fp_sampling_15" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/7351738" id="fp_sampling_15">
-                    <papertitle>Robust and Fast Moving Object Detection in a Non-Stationary Camera via Foreground
-                      Probability based Sampling</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE International Conference on Image Processing (ICIP)</em>, 2015
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/7351738">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ICIP15, rgb2gray_15
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/15-rgb2gray.jpg" alt="rgb2gray_15" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/abstract/document/7351388" id="rgb2gray_15">
-                    <papertitle>Gradient Preserving RGB-to-Gray Conversion using Random Forest</papertitle>
-                  </a>
-                  <br>
-                  ByeongJu Lee,
-                  <a href="https://www.vilab.cau.ac.kr/">Jongwon Choi</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE International Conference on Image Processing (ICIP)</em>, 2015
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/abstract/document/7351388">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        AVSS15, ptztrack_15
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/15-ptztrack.jpg" alt="ptztrack_15" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/7301754" id="ptztrack_15">
-                    <papertitle>Robust Pan-Tilt-Zoom Tracking via Optimization Combining Motion Features and Appearance
-                      Correlations</papertitle>
-                  </a>
-                  <br>
-                  ByeongJu Lee,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://www.vilab.cau.ac.kr/">Jongwon Choi</a>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE International Conf. on Advanced Video and Signal based Surveillance (AVSS)</em>, 2015
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/7301754">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-
-
-              <!--
-        CVIU. Stab_14
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/14-Stab.jpg" alt="Stab_14" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://www.sciencedirect.com/science/article/pii/S1077314213001756" id="Stab_14">
-                    <papertitle>Spatio-temporal weighting in local patches for direct estimation of camera motion in
-                      video stabilization</papertitle>
-                  </a>
-                  <br>
-                  Soo Wan Kim,
-                  Shimin Yin
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>Computer Vision and Image Understanding</em>, SCIE, 2014
-                  <br>
-                  <a href="https://www.sciencedirect.com/science/article/pii/S1077314213001756">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-              <!--
-        ISVC14, unusual_app_14
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/14-unusual_app.jpg" alt="unusual_app_14" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://link.springer.com/content/pdf/10.1007/978-3-319-14249-4_67.pdf" id="unusual_app_14">
-                    <papertitle>Learning with Adaptive Rate for Online Detection of Unusual Appearance</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Jiyun Kim,
-                  Soo Wan Kim,
-                  Hawook Jeong,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>International Symposium on Visual Computing</em>, 2014
-                  <br>
-                  <a href="https://link.springer.com/content/pdf/10.1007/978-3-319-14249-4_67.pdf">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ISVC14, clustering_14
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/14-clustering.jpg" alt="clustering_14" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://link.springer.com/chapter/10.1007/978-3-319-14364-4_7" id="clustering_14">
-                    <papertitle>Proximity Clustering for Revealing a Semantically Dominant Class</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://home.iitk.ac.in/~sandhan/">Tushar Sandhan</a>,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>International Symposium on Visual Computing</em>, 2014
-                  <br>
-                  <a href="https://link.springer.com/chapter/10.1007/978-3-319-14364-4_7">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        ICPR14, mif_14
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/14-mif.jpg" alt="mif_14" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/6977240" id="mif_14">
-                    <papertitle>Motion Interaction Field for Accident Detection in Traffic Surveillance Video
-                    </papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Hawook Jeong,
-                  <a href="https://www.cs.ubc.ca/~kmyi/">Kwang Moo Yi</a>,
-                  Soo Wan Kim,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>International Conference on Pattern Recognition (ICPR)</em>, 2014
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/6977240">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        AVSS14, vsb_14
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/14-vsb.png" alt="vsb_14" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="http://ieeexplore.ieee.org/document/6918669/" id="vsb_14">
-                    <papertitle>Visual Surveillance Briefing System: Event-based Video Retrieval and Summarization
-                    </papertitle>
-                  </a>
-                  <br>
-                  <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>,
-                  <strong>Kimin Yun</strong>,
-                  Soo Wan Kim,
-                  <a href="https://sites.google.com/view/yjyoo3312/">Youngjoon Yoo</a>,
-                  Jiyeoup Jeong.
-                  <br>
-                  <em>IEEE International Conf. on Advanced Video and Signal based Surveillance</em>, 2014
-                  <br>
-                  <a href="http://ieeexplore.ieee.org/document/6918669/">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <!--
-        MVA. NP_MCD_13
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/13-NP_MCD.jpg" alt="NP_MCD_13" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://link.springer.com/article/10.1007/s00138-012-0448-y" id="NP_MCD_13">
-                    <papertitle>Detection of moving objects with a moving camera using non-panoramic background model
-                    </papertitle>
-                  </a>
-                  <br>
-                  Soo Wan Kim,
-                  <strong>Kimin Yun</strong>,
-                  <a href="https://www.cs.ubc.ca/~kmyi/">Kwang Moo Yi</a>,
-                  Sun Jung Kim,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>Machine Vision and Applications (SCIE)</em>, 2013
-                  <br>
-                  <a href="https://link.springer.com/article/10.1007/s00138-012-0448-y">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-
-
-
-              <!--
-        CVPRW, mcd58_13
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/13-mcd58.jpg" alt="mcd58_13" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://openaccess.thecvf.com/content_cvpr_workshops_2013/W03/papers/Yi_Detection_of_Moving_2013_CVPR_paper.pdf"
-                    id="mcd58_13">
-                    <papertitle>Detection of Moving Objects with Non-Stationary Cameras in 5.8ms: Bringing Motion
-                      Detection to your Mobile Device</papertitle>
-                  </a>
-                  <br>
-                  <a href="https://www.cs.ubc.ca/~kmyi/">Kwang Moo Yi</a>,
-                  <strong>Kimin Yun</strong>,
-                  Soo Wan Kim,
-                  <a href="https://hyungjinchang.wordpress.com/">Hyung Jin Chang</a>,
-                  Hawook Jeong,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE Int. workshop on Mobile vision, in conjunction with CVPR</em>, 2013 <span
-                    style="color: red; "><strong>(Best Paper Award)</strong></span>
-                  <br>
-                  <a
-                    href="https://openaccess.thecvf.com/content_cvpr_workshops_2013/W03/papers/Yi_Detection_of_Moving_2013_CVPR_paper.pdf">Paper</a>
-                  /
-                  <a href="https://github.com/vcg-uvic/fastMCD">GitHub</a> /
-                  <a href="https://www.youtube.com/watch?v=cXGtqI0W7cM&ab_channel=officialPIL">Video</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-
-              <!--
-        DICTA11, stab_11
-        -->
-              <tr>
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <img src="data/11-stab.jpg" alt="stab_11" width="160">
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://ieeexplore.ieee.org/document/6128692" id="stab_11">
-                    <papertitle>Probabilistic Approach with Three Hierarchies of Motion Estimation for Video
-                      Stabilization</papertitle>
-                  </a>
-                  <br>
-                  <strong>Kimin Yun</strong>,
-                  Soo Wan Kim,
-                  <a href="https://pil.snu.ac.kr/member/professor">Jin Young Choi</a>.
-                  <br>
-                  <em>IEEE Digital Image Computing: Techniques and Applications</em>, 2011
-                  <br>
-                  <a href="https://ieeexplore.ieee.org/document/6128692">Paper</a>
-                  <p></p>
-                  <p>
-                  </p>
-                </td>
-              </tr>
-
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                  <tr>
-                    <td style="padding:20px;width:100%;vertical-align:middle">
-                      <heading>Award and Honors</heading>
-                      <p>
-                      <ul>
-                        <li>Outstanding reviewer awards at <a
-                            href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee#all-outstanding-reviewer">CVPR'25</a>
-                        </li>
-                        <li>National R&D Excellence Top 100, Minister of Science and ICT, South Korea, 2023</li>
-                        <ul>
-                          <li>2023년 국가연구개발 우수성과 100선 선정, 과학기술정보통신부</li>
-                          <li>성과명: 다양한 환경에 적용가능한 영상 이해 인공지능 핵심기술 개발과 시민 안전 분야 실증 및 사업화 (과제책임자: 배유석) </li>
-                        </ul>
-                        <li>National Disaster Management R&D Award, Ministry of the Interior and Safety, South Korea,
-                          2023</li>
-                        <ul>
-                          <li>2023년 대한민국 재난안전 연구개발 행정안전부 장관상 </li>
-                          <li>성과명: 영상 이해 인공지능 핵심기술을 통한 공공 CCTV 활용 시민 안전 실증 및 사업화 (과제책임자: 배유석) </li>
-                        </ul>
-                        <li>Best Paper Award, ETRI, 2022</li>
-                        <li>National R&D Excellence Top 100, Minister of Science and ICT, South Korea, 2021</li>
-                        <ul>
-                          <li>2021년 국가연구개발 우수성과 100선 선정, 과학기술정보통신부</li>
-                          <li>성과명: 사람의 행동을 정밀하게 이해하는 시각지능 핵심 원천기술 확보 및 실세계 적용 응용 기술 개발 (과제책임자: 배유석) </li>
-                        </ul>
-                        <li>Best Paper Award, ETRI Journal, 2020</li>
-                        <li>ETRI Representative Research - Grand Prize (ETRI 대표성과 대상), ETRI, 2019</li>
-                        <ul>
-                          <li>2019년 ETRI 대표성과</li>
-                          <li>성과명: 영상 내용을 사람처럼 이해하는 시각지능 원천기술 (과제책임자: 박종열) </li>
-                        </ul>
-                        <li>National R&D Excellence Top 100 (Project leader: Jongyoul Park), Minister of Science and
-                          ICT, South Korea, 2019</li>
-                        <ul>
-                          <li>2019년 국가연구개발 우수성과 100선 선정, 과학기술정보통신부</li>
-                          <li>성과명: 대규모 시각 데이터 실시간 분석 및 내용 이해를 위한 디스커버리 플랫폼 (DeepView: 딥뷰) 개발 (과제책임자: 박종열) </li>
-                        </ul>
-                        <li>New Employee Award (신입직원상), ETRI, 2019</li>
-                        <li>Best Paper Award, CVPR worshop, 2013</li>
-                        <li><a href="http://www.songwon.or.kr/pc/main">Songwon KimYoungHwan Scholarship</a>, 2006-2013
-                        </li>
-                        <li>Scholarship of EECS Department, Seoul National University, 2006</li>
-                      </ul>
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                  <tr>
-                    <td style="padding:20px;width:100%;vertical-align:middle">
-                      <heading>Research Internship Supervision</heading>
-                      <p>
-                      <ul>
-                        <li><strong>김소정</strong> (2026)
-                          <ul>
-                            <li>한국어 장면 텍스트 인식에서 VLM의 시각적 역량 및 강건성 분석, <em>지능정보 및 제어 학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>방민재, 한주현</strong> (2025)
-                          <ul>
-                            <li>Reasoning-augmented Vision-Language Models for Improved Competency in Scene Text
-                              Recognition, <em>ICCE-Asia</em></li>
-                            <li>VLM의 한국어 장면 텍스트 이해를 위한 학습 데이터 구성과 CoT 추론 효과 분석, <em>인공지능신호처리 학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>송정훈</strong> (2024)
-                          <ul>
-                            <li>분포 외 객체 특성을 고려한 도로 상황에서의 비정상 객체 탐지, <em>인공지능신호처리 학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>조재호</strong> (2024)
-                          <ul>
-                            <li>자기지도 학습과 데이터 선별 전략을 통한 오픈-셋 탐지기의 Fine-tuning, <em>한국컴퓨터종합학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>부원국</strong> (2023)
-                          <ul>
-                            <li>멀티태스크 학습을 활용한 실세계 쓰러진 사람 탐지 기술 개발, <em>대한전자공학회 하계학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>김진아</strong> (2022)
-                          <ul>
-                            <li>사람 자세상태 인식 향상을 위한 다중 작업 학습용 백본 모델 및 데이터셋 조합 연구, <em>한국컴퓨터종합학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>송길재</strong> (2022)
-                          <ul>
-                            <li>다중 카메라 입력 인식 모델을 위한 배치 추론 및 이벤트 알람 전송 프레임워크, <em>한국컴퓨터종합학술대회</em></li>
-                          </ul>
-                        </li>
-                        <li><strong>오원석</strong> (2022)
-                          <ul>
-                            <li>얼굴이 비식별화된 데이터셋에서의 사람 탐지 성능을 개선하기 위한 연구</li>
-                          </ul>
-                        </li>
-                        <li><strong>이학진</strong> (2021)
-                          <ul>
-                            <li>사람 추적 및 ReID를 지원하는 FairMOT와 Pedestrian Attribute Recognition 연동</li>
-                          </ul>
-                        </li>
-                        <li><strong>이건우</strong> (2020)
-                          <ul>
-                            <li>객체 및 동사까지 함께 표현하는 V-COCO 데이터셋에서의 탐지 성능 향상</li>
-                          </ul>
-                        </li>
-                        <li><strong>박건호</strong> (2019)
-                          <ul>
-                            <li>Computer Vision 최신 SOTA 모델의 실세계 데이터 적용 테스트 및 분석 연구</li>
-                          </ul>
-                        </li>
-                        <li><strong>왕유승</strong> (2018)
-                          <ul>
-                            <li>실세계 행동 이해를 위한 사람 관절의 시간적 흐름 정보 활용 연구</li>
-                          </ul>
-                        </li>
-                        <li><strong>연지수</strong> (2018)
-                          <ul>
-                            <li>동영상 내 의미영역 분할을 위한 ViBE 알고리즘 개선 연구</li>
-                          </ul>
-                        </li>
-                        <li><strong>김보경</strong> (2017)
-                          <ul>
-                            <li>실세계 행동 이해를 위한 학습 데이터 구축과 정제 파이프라인 구축</li>
-                          </ul>
-                        </li>
-                      </ul>
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                  <tr>
-                    <td style="padding:20px;width:100%;vertical-align:middle">
-                      <heading>Link</heading>
-                      <p>
-                      <ul>
-                        <li><a href="https://etri-visualintelligence.github.io/deepview/">Project - DeepView:
-                            Development of High Performance Visual BigData Discovery Platform for Large-Scale Realtime
-                            Data Analysis (Korean)</a></li>
-                        <li><a href="https://etri-visualintelligence.github.io/caml/">Project - CAML: Development of
-                            Artificial Intelligence Technology
-                            for Self-Improving Competency-Aware Learning Capabilities (Korean)</a></li>
-                      </ul>
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-            </tbody>
-          </table>
-          <table
-            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <tr>
-                <td style="padding:0px">
-                  <br>
-                  <p style="text-align:right;font-size:small;">
-                    Template borrowed from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a> and
-                    <a href="https://sangdooyun.github.io/">Sangdoo Yun</a>.
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-  </table>
+  <nav><div class="nav-inner">
+    <span class="brand">Kimin Yun</span>
+    <a href="#news">News</a><a href="#projects">Projects</a><a href="#group">Group</a><a href="#pubs">Publications</a><a href="#patents">Patents</a><a href="#talks">Talks</a><a href="#awards">Awards</a><a href="#service">Service</a>
+  </div></nav>
+
+  <header><div class="wrap top">
+    <div class="txt">
+      <h1>Kimin Yun <span class="kr">윤기민</span></h1>
+      <div class="sub">Principal Researcher, ETRI &nbsp;·&nbsp; Associate Professor, UST</div>
+      <p>I am a Principal Researcher at the <a href="https://etri-visualintelligence.github.io/">Visual Intelligence Lab</a>, <a href="https://www.etri.re.kr/eng/main/main.etri">ETRI</a>, South Korea, and since 2025 an Associate Professor of Artificial Intelligence at <a href="https://www.ust.ac.kr/eng/">UST</a>. I am involved in national R&amp;D projects in computer vision and machine learning, with an emphasis on practical, real-world applications such as surveillance-camera systems. My current research interests include evaluating the competency of AI models, improving large-scale foundation models, and applying multimodal models to real-world problems.</p>
+      <p>I received my B.S. (2010) and integrated M.S./Ph.D. (2017) in Electrical and Computer Engineering from <a href="https://ece.snu.ac.kr/en">Seoul National University</a>, advised by <a href="https://pil.snu.ac.kr/home">Prof. Jin Young Choi</a>.</p>
+      <div class="links-row"><span class="email">kimin.yun (at) etri.re.kr</span><a href="data/CV_kmyun.pdf">CV</a><a href="https://scholar.google.co.kr/citations?user=fcVfLCkAAAAJ">Google Scholar</a><a href="https://www.ust.ac.kr/prog/major/kor/sub03_03_04/all/view.do?majorNo=71&kind=professor&empNo=g7eyOucZusVpN0z6VYo0JA==">UST (KR)</a></div>
+    </div>
+    <div class="photo"><img src="data/kimin_profile.jpg" alt="Kimin Yun"></div>
+  </div></header>
+
+  <section id="news"><div class="wrap">
+    <h2>News</h2><div class="hr"></div>
+    <div class="news">
+      <div class="n"><span class="d">2026.03</span><span><span class="badge ev">Promotion</span>Promoted to <b>Principal Researcher</b> at ETRI.</span></div>
+      <div class="n"><span class="d">2026.02</span><span><span class="badge">Paper</span>Accepted to <i>IEEE Trans. on Multimedia</i> — weakly-supervised video grounding.</span></div>
+      <div class="n"><span class="d">2026.01</span><span><span class="badge">Paper</span>Accepted to <i>ICPR 2026</i> — incremental object detection.</span></div>
+      <div class="n"><span class="d">2026.01</span><span><span class="badge">Paper</span>Published in <i>IEEE Access</i> — zero-shot anomaly segmentation.</span></div>
+      <div class="n"><span class="d">2025.06</span><span><span class="badge ev">Award</span>Outstanding Reviewer Award, <i>CVPR 2025</i>.</span></div>
+      <div class="n"><span class="d">2025.03</span><span><span class="badge ev">Appointment</span>Appointed Associate Professor of AI at UST.</span></div>
+    </div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2>Projects</h2><div class="hr"></div>
+    <div class="programs">
+      <div class="program">
+        <div class="tag">National R&amp;D · 2014–2024</div>
+        <h3>DeepView</h3>
+        <p>High-performance visual big-data discovery platform for large-scale, real-time video understanding. National R&amp;D Excellence Top 100 (2019, 2021, 2023).</p>
+        <div class="links"><a href="https://etri-visualintelligence.github.io/deepview/">Project page →</a></div>
+      </div>
+      <div class="program">
+        <div class="tag">National R&amp;D · ongoing</div>
+        <h3>CAML</h3>
+        <p>Self-improving, competency-aware learning — out-of-distribution detection, uncertainty, and open-set recognition for reliable vision systems.</p>
+        <div class="links"><a href="https://etri-visualintelligence.github.io/caml/">Project page →</a></div>
+      </div>
+    </div>
+    <div class="impact-label">실증 성과 · Real-world Impact</div>
+    <div class="impact-cards">
+      <div class="card">
+        <div class="thumb"><img src="data/19-garbage.jpg" alt="Illegal dumping detection"><div class="play"><span>▶</span></div></div>
+        <div class="card-b"><h4>Illegal Dumping Detection</h4><span class="kr">불법 쓰레기 투기 행위 탐지</span><span class="ph">▶ YouTube (add link)</span></div>
+      </div>
+      <div class="card">
+        <div class="thumb"><img src="data/21-fallen.jpg" alt="Fallen person detection"><div class="play"><span>▶</span></div></div>
+        <div class="card-b"><h4>Fallen Person Detection</h4><span class="kr">쓰러진 사람 탐지 · 공공 CCTV 실증</span><span class="ph">▶ YouTube (add link)</span></div>
+      </div>
+      <div class="card">
+        <div class="thumb"><img src="data/14-vsb.png" alt="Banner understanding"><div class="play"><span>▶</span></div></div>
+        <div class="card-b"><h4>Banner Understanding</h4><span class="kr">현수막 이해</span><span class="ph">▶ YouTube (add link)</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="group"><div class="wrap">
+    <h2>Group &amp; Students</h2><div class="hr"></div>
+    <div class="gi">
+      <p>I advise M.S. and Ph.D. students in Artificial Intelligence at UST, and supervise research interns at ETRI working on computer vision for real-world impact. I'm always looking for motivated students interested in vision, OOD / uncertainty, and surveillance AI. &nbsp;<a class="cta" href="mailto:kimin.yun@etri.re.kr">Prospective students → email me</a></p>
+    </div>
+
+    <div class="subhead">Advised Students</div>
+    <div class="slots">
+      <div class="slot"><span class="av">'26</span><div>Incoming M.S. student<br><b>Starting Sept 2026</b></div></div>
+      <div class="slot"><span class="av">+</span><div>Open position<br><b>Recruiting</b></div></div>
+    </div>
+
+    <div class="subhead">Alumni · Research Interns</div>
+    <div class="alumni">
+      <div class="al"><span class="y">2026</span><div><span class="nm">김소정</span> <span class="tg">— Scene text recognition (vision-language models)</span></div></div>
+      <div class="al"><span class="y">2025</span><div><span class="nm">방민재 · 한주현</span> <span class="tg">— Scene text recognition (ICCE-Asia)</span></div></div>
+      <div class="al"><span class="y">2024</span><div><span class="nm">송정훈</span> <span class="tg">— Out-of-distribution detection</span></div></div>
+      <div class="al"><span class="y">2024</span><div><span class="nm">조재호</span> <span class="tg">— Open-set detection</span></div></div>
+      <div class="al"><span class="y">2023</span><div><span class="nm">부원국</span> <span class="tg">— Fallen-person detection</span></div></div>
+      <div class="al"><span class="y">2022</span><div><span class="nm">김진아</span> <span class="tg">— Human pose recognition</span></div></div>
+      <div class="al"><span class="y">2022</span><div><span class="nm">송길재</span> <span class="tg">— Multi-camera inference framework</span></div></div>
+      <div class="al"><span class="y">2022</span><div><span class="nm">오원석</span> <span class="tg">— Person detection on de-identified data</span></div></div>
+      <div class="al"><span class="y">2021</span><div><span class="nm">이학진</span> <span class="tg">— Person tracking &amp; re-identification</span></div></div>
+      <div class="al"><span class="y">2020</span><div><span class="nm">이건우</span> <span class="tg">— Human-object interaction detection</span></div></div>
+      <div class="al"><span class="y">2019</span><div><span class="nm">박건호</span> <span class="tg">— Real-world model evaluation</span></div></div>
+      <div class="al"><span class="y">2018</span><div><span class="nm">왕유승</span> <span class="tg">— Skeleton-based action recognition</span></div></div>
+      <div class="al"><span class="y">2018</span><div><span class="nm">연지수</span> <span class="tg">— Video object segmentation</span></div></div>
+      <div class="al"><span class="y">2017</span><div><span class="nm">김보경</span> <span class="tg">— Action-recognition dataset pipeline</span></div></div>
+    </div>
+  </div></section>
+
+  <section id="pubs"><div class="wrap">
+    <h2>Publications</h2><div class="hr"></div>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:4px"><span class="chip j">Journal</span> &nbsp;<span class="chip c">Conf.</span> &nbsp;= peer-reviewed journal / conference</p>
+
+    <div class="yhdr">2026</div>
+    <div class="pub"><img src="data/26-TMM.png" alt=""><div><a class="pt" href="https://arxiv.org/abs/2602.03071">Finding Optimal Video Moment without Training: Gaussian Boundary Optimization for Weakly Supervised Video Grounding</a><div class="au">Sunoh Kim, <b>Kimin Yun</b>, Daeho Um. <span class="vn">IEEE Transactions on Multimedia (SCIE)</span>, 2026 <span class="chip j">Journal</span></div><div class="lk"><a href="https://arxiv.org/abs/2602.03071">Paper</a></div></div></div>
+    <div class="pub"><img src="data/26-icpr.png" alt=""><div><span class="pt">Dynamic Augmentation Strategy Selection for Incremental Object Detection</span><div class="au">Yujeong Oh, Taehoon Kim, Mingyu Lee, <b>Kimin Yun†</b>, Jongwon Choi†. <span class="vn">International Conference on Pattern Recognition (ICPR)</span>, 2026 <span class="chip c">Conf.</span> · † co-corresponding</div></div></div>
+    <div class="pub"><img src="data/26-acc-ood.jpeg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/11308081">Zero-Shot Anomaly Segmentation via Query-Level Uncertainty Analysis</a><div class="au"><b>Kimin Yun†</b>, Yuseok Bae. <span class="vn">IEEE Access (SCIE)</span>, 2026 <span class="chip j">Journal</span> · † corresponding</div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/11308081">Paper</a></div></div></div>
+    <div class="pub"><img src="data/26-ETRIJ.jpeg" alt=""><div><span class="pt">Fast Adversarial Robustness Recovery against Model Parameter Exposure through Hopfield-type Neural ODEs</span><div class="au">Yu-Hyun Shin*, <b>Kimin Yun*†</b>, Yuseok Bae. <span class="vn">ETRI Journal (SCIE)</span>, 2026 (accepted) <span class="chip j">Journal</span> · * equal · † corresponding</div></div></div>
+
+    <div class="yhdr">2025</div>
+    <div class="pub"><img src="data/25-access-cot.jpeg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/11223182">Multi-Agent Visual Reasoning for Out-of-Distribution Detection in Complex Road Environments</a><div class="au">Jeonghyo Song, <b>Kimin Yun</b>, Dae Ung Jo, Jinyoung Kim, Youngjoon Yoo. <span class="vn">IEEE Access (SCIE)</span>, 2025 <span class="chip j">Journal</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/11223182">Paper</a></div></div></div>
+    <div class="pub"><img src="data/25-icce.jpg" alt=""><div><span class="pt">Reasoning-augmented Vision-Language Models for Improved Competency in Scene Text Recognition</span><div class="au">Minjae Bang*, Juhyeon Han*, Yuseok Bae, Sunok Kim†, <b>Kimin Yun†</b>. <span class="vn">ICCE-Asia</span>, 2025 <span class="chip c">Conf.</span> · * equal (ETRI/UST internship) · † corresponding</div></div></div>
+    <div class="pub"><img src="data/25-TSA.jpeg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/11149799">Task-Adaptive Open-Set Detection with Prompt-Tuned Adaptors</a><div class="au"><b>Kimin Yun</b>, Kangmin Bae, Yuseok Bae. <span class="vn">IEEE AVSS</span>, 2025 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/11149799">Paper</a></div></div></div>
+    <div class="pub"><img src="data/25-cot.jpeg" alt=""><div><a class="pt" href="https://arxiv.org/abs/2507.03984">CoT-Segmenter: Enhancing OOD Detection in Dense Road Scenes via Chain-of-Thought Reasoning</a><div class="au">Jeonghyo Song, <b>Kimin Yun</b>, DaeUng Jo, Jinyoung Kim, Youngjoon Yoo. <span class="vn">IEEE AVSS</span>, 2025 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/2507.03984">arXiv</a></div></div></div>
+    <div class="pub"><img src="data/25-uncer.jpeg" alt=""><div><a class="pt" href="https://arxiv.org/abs/2507.18106">Distributional Uncertainty for Out-of-Distribution Detection</a><div class="au">JinYoung Kim, DaeUng Jo, <b>Kimin Yun</b>, Jeonghyo Song, Youngjoon Yoo. <span class="vn">IEEE AVSS</span>, 2025 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/2507.18106">arXiv</a></div></div></div>
+
+    <div class="yhdr">2024</div>
+    <div class="pub"><img src="data/24-PLM.jpg" alt=""><div><a class="pt" href="https://arxiv.org/abs/2403.09199">Task-Specific Adaptation of Segmentation Foundation Model via Prompt Learning</a><div class="au">Hyung-Il Kim*, <b>Kimin Yun*</b>, Jun-Seok Yun, Yuseok Bae. <span class="vn">ECCV Workshop on OOD Generalization (ECCVW)</span>, 2024 <span class="chip c">Conf.</span> · * equal</div><div class="lk"><a href="https://arxiv.org/abs/2403.09199">arXiv</a></div></div></div>
+    <div class="pub"><img src="data/24-ictc.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/10827063">Training-Free OOD Object Detection Leveraging Pre-Trained Segmentation Model Competency</a><div class="au"><b>Kimin Yun*</b>, Jeonghoon Song*, Yuseok Bae. <span class="vn">ICTC</span>, 2024 <span class="chip c">Conf.</span> · * equal</div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/10827063">Paper</a></div></div></div>
+
+    <div class="yhdr">2023</div>
+    <div class="pub"><img src="data/23-etrij.jpg" alt=""><div><a class="pt" href="https://onlinelibrary.wiley.com/doi/10.4218/etrij.2023-0115">Background memory-assisted zero-shot video object segmentation for unmanned aerial and ground vehicles</a><div class="au"><b>Kimin Yun</b>, Hyung-Il Kim, Kangmin Bae, Jinyoung Moon. <span class="vn">ETRI Journal (SCIE)</span>, 2023 <span class="chip j">Journal</span></div><div class="lk"><a href="https://onlinelibrary.wiley.com/doi/10.4218/etrij.2023-0115">Paper</a> / <a href="https://github.com/kimin-yun/VIBE-H">Code</a></div></div></div>
+
+    <div class="yhdr">2022</div>
+    <div class="pub"><img src="data/22-tbiom_box.png" alt=""><div><a class="pt" href="https://arxiv.org/pdf/2209.07220.pdf">Face Shape-Guided Deep Feature Alignment for Face Recognition Robust to Face Misalignment</a><div class="au">Hyung-Il Kim, <b>Kimin Yun</b>, Yong Man Ro. <span class="vn">IEEE Trans. on Biometrics, Behavior, and Identity Science (TBIOM)</span>, 2022 <span class="chip j">Journal</span></div><div class="lk"><a href="https://arxiv.org/abs/2209.07220">arXiv</a> / <a href="bibtex/tbiom22.txt">Bibtex</a></div></div></div>
+    <div class="pub"><img src="data/22-swag.jpg" alt=""><div><a class="pt" href="https://dl.acm.org/doi/abs/10.1145/3511808.3557463">SWAG-Net: Semantic Word-Aware Graph Network for Temporal Video Grounding</a><div class="au">Sunoh Kim, Taegil Ha, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">ACM CIKM</span>, 2022 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://dl.acm.org/doi/abs/10.1145/3511808.3557463">Paper</a></div></div></div>
+    <div class="pub"><img src="data/22-uncertain.jpg" alt=""><div><a class="pt" href="https://link.springer.com/chapter/10.1007/978-3-031-25085-9_2">Localization Uncertainty Estimation for Anchor-Free Object Detection</a><div class="au">Youngwan Lee, Joong-won Hwang, Hyung-Il Kim, <b>Kimin Yun</b>, Yongjin Kwon, Yuseok Bae, Sung Ju Hwang. <span class="vn">ECCV Workshop on Uncertainty Quantification (ECCVW)</span>, 2022 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/2006.15607">arXiv</a></div></div></div>
+    <div class="pub"><img src="data/22-OC_PAR.jpg" alt=""><div><a class="pt" href="https://www.mdpi.com/1424-8220/22/17/6626">Occluded Pedestrian-Attribute Recognition for Video Sensors Using Group Sparsity</a><div class="au">Geonu Lee, <b>Kimin Yun</b>, Jungchan Cho. <span class="vn">Sensors (SCIE)</span>, 2022 <span class="chip j">Journal</span></div><div class="lk"><a href="https://arxiv.org/abs/2110.08708">arXiv</a></div></div></div>
+
+    <div class="yhdr">2021</div>
+    <div class="pub"><img src="data/21-Gating.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9695483&tag=1">Gating Mechanism in Deep Neural Networks for Resource-Efficient Continual Learning</a><div class="au">Hyundong Jin, <b>Kimin Yun</b>, Eunwoo Kim. <span class="vn">IEEE Access (SCIE)</span>, 2021 <span class="chip j">Journal</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9695483&tag=1">Paper</a></div></div></div>
+    <div class="pub"><img src="data/21-vov3d.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/9638459">Diverse Temporal Aggregation and Depthwise Spatiotemporal Factorization for Efficient Video Classification</a><div class="au">Youngwan Lee, Hyung-Il Kim, <b>Kimin Yun</b>, Jinyoung Moon. <span class="vn">IEEE Access (SCIE)</span>, 2021 <span class="chip j">Journal</span></div><div class="lk"><a href="https://arxiv.org/abs/2012.00317">arXiv</a></div></div></div>
+    <div class="pub"><img src="data/21-HOI.png" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/9360596">Improved Human-Object Interaction Detection through On-the-Fly Stacked Generalization</a><div class="au">Geonu Lee, <b>Kimin Yun</b>, Jungchan Cho. <span class="vn">IEEE Access (SCIE)</span>, 2021 <span class="chip j">Journal</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/9360596">Paper</a></div></div></div>
+    <div class="pub"><img src="data/21-fallen.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/9663782">The Dataset and Baseline Models to Detect Human Postural States Robustly against Irregular Postures</a><div class="au">Kangmin Bae*, <b>Kimin Yun*</b>, Jungchan Cho, Yuseok Bae. <span class="vn">IEEE AVSS</span>, 2021 <span class="chip c">Conf.</span> · * equal</div><div class="lk"><a href="https://ieeexplore.ieee.org/document/9663782">Paper</a></div></div></div>
+    <div class="pub"><img src="data/21-pa_ground.jpg" alt=""><div><a class="pt" href="https://www.computer.org/csdl/proceedings-article/avss/2021/09663815/1zUZ2axe46s">Position-aware Location Regression Network for Temporal Video Grounding</a><div class="au">Sunoh Kim, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE AVSS</span>, 2021 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/2204.05499">arXiv</a> / <a href="https://github.com/sunoh-kim/PLRN">GitHub</a></div></div></div>
+
+    <div class="yhdr">2020</div>
+    <div class="pub"><img src="data/20-rotation_pose.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/8995541">Robust Human Pose Estimation for Rotation via Self-Supervised Learning</a><div class="au"><b>Kimin Yun</b>, Jongyoul Park, Jungchan Cho. <span class="vn">IEEE Access (SCIE)</span>, 2020 <span class="chip j">Journal</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/8995541">Paper</a></div></div></div>
+    <div class="pub"><img src="data/20-ptz.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/9413085">Unsupervised Moving Object Detection through Background Models for PTZ Camera</a><div class="au"><b>Kimin Yun</b>, Hyung-Il Kim, Kangmin Bae, Jongyoul Park. <span class="vn">ICPR</span>, 2020 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/9413085">Paper</a> / <a href="https://ailb-web.ing.unimore.it/icpr/media/slides/11237.pdf">Slide</a></div></div></div>
+    <div class="pub"><img src="data/20-mtl.jpg" alt=""><div><a class="pt" href="https://www.bmvc2020-conference.com/conference/papers/paper_0279.html">Anti-Litter Surveillance based on Person Understanding via Multi-task Learning</a><div class="au">Kangmin Bae*, <b>Kimin Yun*</b>, Hyung-Il Kim, Youngwan Lee, Jongyoul Park. <span class="vn">BMVC</span>, 2020 <span class="chip c">Conf.</span> · * equal</div><div class="lk"><a href="https://www.bmvc2020-conference.com/assets/papers/0279.pdf">Paper</a></div></div></div>
+
+    <div class="yhdr">2019</div>
+    <div class="pub"><img src="data/19-garbage.jpg" alt=""><div><a class="pt" href="https://onlinelibrary.wiley.com/doi/full/10.4218/etrij.2018-0520">Vision-based Garbage Dumping Action Detection for Real-World Surveillance Platform</a><div class="au"><b>Kimin Yun</b>, Yongjin Kwon, Sungchan Oh, Jinyoung Moon, Jongyoul Park. <span class="vn">ETRI Journal (SCIE)</span>, 2019 <span class="chip j">Journal</span> · <span class="ba">Best Paper Award</span></div><div class="lk"><a href="https://onlinelibrary.wiley.com/doi/full/10.4218/etrij.2018-0520">Paper</a></div></div></div>
+    <div class="pub"><img src="data/19-GCNH.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8659015">Skeleton-based Action Recognition of People Handling Objects</a><div class="au">Sunoh Kim, <b>Kimin Yun</b>, Jongyoul Park, Jin Young Choi. <span class="vn">IEEE WACV</span>, 2019 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://arxiv.org/abs/1901.06882">arXiv</a></div></div></div>
+
+    <div class="yhdr">2018</div>
+    <div class="pub"><img src="data/18-RL_track.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/8306309">Action-Driven Visual Object Tracking with Deep Reinforcement Learning</a><div class="au">Sangdoo Yun, Jongwon Choi, Youngjoon Yoo, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE TNNLS (SCIE)</span>, 2018 <span class="chip j">Journal</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/8306309">Paper</a></div></div></div>
+    <div class="pub"><img src="data/18-dankook.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/8527472">Behavior Recognition of a Person in a Daily Video Using Joint Position Information</a><div class="au">Jeong-Min Seo, Haanju Yoo, <b>Kimin Yun</b>, Hyunil Kim, Sang-Il Choi. <span class="vn">IEEE ICAIC Workshop</span>, 2018 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/8527472">Paper</a></div></div></div>
+
+    <div class="yhdr">2017</div>
+    <div class="pub"><img src="data/17-rltrack.jpg" alt=""><div><a class="pt" href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf">Action-Decision Network for Visual Tracking with Deep Reinforcement Learning</a><div class="au">Sangdoo Yun, Jongwon Choi, Youngjoon Yoo, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">CVPR</span>, 2017 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf">Paper</a></div></div></div>
+    <div class="pub"><img src="data/17-SC_MCD.jpg" alt=""><div><a class="pt" href="https://www.sciencedirect.com/science/article/pii/S0167865517300260">Scene Conditional Background Update for Moving Object Detection in a Moving Camera</a><div class="au"><b>Kimin Yun</b>, Jongin Lim, Jin Young Choi. <span class="vn">Pattern Recognition Letters (SCIE)</span>, 2017 <span class="chip j">Journal</span></div><div class="lk"><a href="https://www.sciencedirect.com/science/article/pii/S0167865517300260">Paper</a> / <a href="https://www.youtube.com/watch?v=ZNFZzhQgjkc&ab_channel=officialPIL">Video</a> / <a href="https://github.com/CansenJIANG/SCBU">Binary</a></div></div></div>
+    <div class="pub"><img src="data/17-MIF.jpg" alt=""><div><a class="pt" href="https://link.springer.com/article/10.1007/s00138-016-0816-0">Motion Interaction Field for Detection of Abnormal Interactions</a><div class="au"><b>Kimin Yun</b>, Youngjoon Yoo, Jin Young Choi. <span class="vn">Machine Vision and Applications (SCIE)</span>, 2017 <span class="chip j">Journal</span></div><div class="lk"><a href="https://link.springer.com/article/10.1007/s00138-016-0816-0">Paper</a> / <a href="https://www.youtube.com/watch?v=YKciFMjzLqQ&ab_channel=officialPIL">Video</a></div></div></div>
+    <div class="pub"><img src="data/17-DMCD.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/8296597">Appearance and Motion based Deep Learning Architecture for Moving Object Detection in Moving Camera</a><div class="au">Byeongho Heo, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE ICIP</span>, 2017 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://sigport.org/sites/default/files/docs/ICIP17_heo_0.pdf">Paper</a></div></div></div>
+
+    <div class="yhdr">2016</div>
+    <div class="pub"><img src="data/16-path_predict.png" alt=""><div><a class="pt" href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Yoo_Visual_Path_Prediction_CVPR_2016_paper.pdf">Visual Path Prediction in Complex Scenes with Crowded Moving Objects</a><div class="au">Youngjoon Yoo, <b>Kimin Yun</b>, Sangdoo Yun, Jonghee Hong, Hawook Jeong, Jin Young Choi. <span class="vn">CVPR</span>, 2016 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Yoo_Visual_Path_Prediction_CVPR_2016_paper.pdf">Paper</a></div></div></div>
+    <div class="pub"><img src="data/16-car_MCD.png" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/7900044">Attention-Inspired Moving Object Detection in Monocular Dashcam Videos</a><div class="au"><b>Kimin Yun</b>, Jongin Lim, Sangdoo Yun, Soo Wan Kim, Jin Young Choi. <span class="vn">ICPR</span>, 2016 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/7900044">Paper</a></div></div></div>
+    <div class="pub"><img src="data/16-pedestrian.png" alt=""><div><a class="pt" href="https://openreview.net/forum?id=S1N49t-uZr">Density-Aware Pedestrian Proposal Networks for Robust People Detection in Crowded Scenes</a><div class="au">Sangdoo Yun, <b>Kimin Yun</b>, Jongwon Choi, Jin Young Choi. <span class="vn">ECCV Workshop on Crowd Understanding</span>, 2016 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://openreview.net/forum?id=S1N49t-uZr">Paper</a></div></div></div>
+
+    <div class="yhdr">2015</div>
+    <div class="pub"><img src="data/15-fp_sampling.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/7351738">Robust and Fast Moving Object Detection in a Non-Stationary Camera via Foreground Probability based Sampling</a><div class="au"><b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE ICIP</span>, 2015 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/7351738">Paper</a></div></div></div>
+    <div class="pub"><img src="data/15-ptztrack.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/7301754">Robust Pan-Tilt-Zoom Tracking via Optimization Combining Motion Features and Appearance Correlations</a><div class="au">ByeongJu Lee, <b>Kimin Yun</b>, Jongwon Choi, Jin Young Choi. <span class="vn">IEEE AVSS</span>, 2015 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/7301754">Paper</a></div></div></div>
+    <div class="pub"><img src="data/15-rgb2gray.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/abstract/document/7351388">Gradient Preserving RGB-to-Gray Conversion using Random Forest</a><div class="au">ByeongJu Lee, Jongwon Choi, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">IEEE ICIP</span>, 2015 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/abstract/document/7351388">Paper</a></div></div></div>
+
+    <div class="yhdr">2014</div>
+    <div class="pub"><img src="data/14-Stab.jpg" alt=""><div><a class="pt" href="https://www.sciencedirect.com/science/article/pii/S1077314213001756">Spatio-temporal weighting in local patches for direct estimation of camera motion in video stabilization</a><div class="au">Soo Wan Kim, Shimin Yin, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">Computer Vision and Image Understanding (SCIE)</span>, 2014 <span class="chip j">Journal</span></div><div class="lk"><a href="https://www.sciencedirect.com/science/article/pii/S1077314213001756">Paper</a></div></div></div>
+    <div class="pub"><img src="data/14-mif.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/6977240">Motion Interaction Field for Accident Detection in Traffic Surveillance Video</a><div class="au"><b>Kimin Yun</b>, Hawook Jeong, Kwang Moo Yi, Soo Wan Kim, Jin Young Choi. <span class="vn">ICPR</span>, 2014 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/6977240">Paper</a></div></div></div>
+    <div class="pub"><img src="data/14-vsb.png" alt=""><div><a class="pt" href="http://ieeexplore.ieee.org/document/6918669/">Visual Surveillance Briefing System: Event-based Video Retrieval and Summarization</a><div class="au">Sangdoo Yun, <b>Kimin Yun</b>, Soo Wan Kim, Youngjoon Yoo, Jiyeoup Jeong. <span class="vn">IEEE AVSS</span>, 2014 <span class="chip c">Conf.</span></div><div class="lk"><a href="http://ieeexplore.ieee.org/document/6918669/">Paper</a></div></div></div>
+    <div class="pub"><img src="data/14-unusual_app.jpg" alt=""><div><a class="pt" href="https://link.springer.com/content/pdf/10.1007/978-3-319-14249-4_67.pdf">Learning with Adaptive Rate for Online Detection of Unusual Appearance</a><div class="au"><b>Kimin Yun</b>, Jiyun Kim, Soo Wan Kim, Hawook Jeong, Jin Young Choi. <span class="vn">ISVC</span>, 2014 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://link.springer.com/content/pdf/10.1007/978-3-319-14249-4_67.pdf">Paper</a></div></div></div>
+    <div class="pub"><img src="data/14-clustering.jpg" alt=""><div><a class="pt" href="https://link.springer.com/chapter/10.1007/978-3-319-14364-4_7">Proximity Clustering for Revealing a Semantically Dominant Class</a><div class="au">Tushar Sandhan, <b>Kimin Yun</b>, Jin Young Choi. <span class="vn">ISVC</span>, 2014 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://link.springer.com/chapter/10.1007/978-3-319-14364-4_7">Paper</a></div></div></div>
+
+    <div class="yhdr">2013</div>
+    <div class="pub"><img src="data/13-mcd58.jpg" alt=""><div><a class="pt" href="https://openaccess.thecvf.com/content_cvpr_workshops_2013/W03/papers/Yi_Detection_of_Moving_2013_CVPR_paper.pdf">Detection of Moving Objects with Non-Stationary Cameras in 5.8ms: Bringing Motion Detection to your Mobile Device</a><div class="au">Kwang Moo Yi, <b>Kimin Yun</b>, Soo Wan Kim, Hyung Jin Chang, Hawook Jeong, Jin Young Choi. <span class="vn">CVPR Workshop on Mobile Vision</span>, 2013 <span class="chip c">Conf.</span> · <span class="ba">Best Paper Award</span></div><div class="lk"><a href="https://openaccess.thecvf.com/content_cvpr_workshops_2013/W03/papers/Yi_Detection_of_Moving_2013_CVPR_paper.pdf">Paper</a> / <a href="https://github.com/vcg-uvic/fastMCD">GitHub</a> / <a href="https://www.youtube.com/watch?v=cXGtqI0W7cM&ab_channel=officialPIL">Video</a></div></div></div>
+    <div class="pub"><img src="data/13-NP_MCD.jpg" alt=""><div><a class="pt" href="https://link.springer.com/article/10.1007/s00138-012-0448-y">Detection of moving objects with a moving camera using non-panoramic background model</a><div class="au">Soo Wan Kim, <b>Kimin Yun</b>, Kwang Moo Yi, Sun Jung Kim, Jin Young Choi. <span class="vn">Machine Vision and Applications (SCIE)</span>, 2013 <span class="chip j">Journal</span></div><div class="lk"><a href="https://link.springer.com/article/10.1007/s00138-012-0448-y">Paper</a></div></div></div>
+
+    <div class="yhdr">2011</div>
+    <div class="pub"><img src="data/11-stab.jpg" alt=""><div><a class="pt" href="https://ieeexplore.ieee.org/document/6128692">Probabilistic Approach with Three Hierarchies of Motion Estimation for Video Stabilization</a><div class="au"><b>Kimin Yun</b>, Soo Wan Kim, Jin Young Choi. <span class="vn">IEEE DICTA</span>, 2011 <span class="chip c">Conf.</span></div><div class="lk"><a href="https://ieeexplore.ieee.org/document/6128692">Paper</a></div></div></div>
+
+  </div></section>
+
+  <section id="patents"><div class="wrap">
+    <h2>Patents</h2><div class="hr"></div>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:4px"><span class="chip g">Granted</span> &nbsp;<span class="chip p">Pending</span></p>
+
+    <div class="yhdr">2025</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US12374094B2">Method and apparatus for feature transforming and processing based on artificial neural network</a><div class="au">US Patent US12374094B2 · 2025 <span class="chip g">Granted</span></div></div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US20250181707A1">System and method for training deep learning networks resistant to adversarial attacks</a><div class="au">US Patent US20250181707A1 · 2025 <span class="chip p">Pending</span></div></div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US20250104383A1">Apparatus and method for recognizing image and prompt tuning method related to the same</a><div class="au">US Patent US20250104383A1 · 2025 <span class="chip p">Pending</span></div></div>
+
+    <div class="yhdr">2024</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US12142028B2">Object recognition apparatus and method based on environment matching</a><div class="au">US Patent US12142028B2 · 2024 <span class="chip g">Granted</span></div></div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US12056909B2">Method and apparatus for face recognition robust to alignment status of the face</a><div class="au">US Patent US12056909B2 · 2024 <span class="chip g">Granted</span></div></div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US11935296B2">Apparatus and method for online action detection</a><div class="au">US Patent US11935296B2 · 2024 <span class="chip g">Granted</span></div></div>
+
+    <div class="yhdr">2023</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US20230059462A1">Method and apparatus for performing multi-task learning based on task similarity</a><div class="au">US Patent US20230059462A1 · 2023 <span class="chip p">Pending</span></div></div>
+
+    <div class="yhdr">2022</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US11527067B2">Electronic device, action instance generation method, and recording medium</a><div class="au">US Patent US11527067B2 · 2022 <span class="chip g">Granted</span></div></div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US11380133B2">Domain adaptation-based object recognition apparatus and method</a><div class="au">US Patent US11380133B2 · 2022 <span class="chip g">Granted</span></div></div>
+
+    <div class="yhdr">2020</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US10789470B2">System and method for detecting dynamic object</a><div class="au">US Patent US10789470B2 · 2020 <span class="chip g">Granted</span></div></div>
+
+    <div class="yhdr">2019</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US10311579B2">Apparatus and method for detecting foreground in image</a><div class="au">US Patent US10311579B2 · 2019 <span class="chip g">Granted</span></div></div>
+    <div class="row"><span class="pt">Smart glasses and method of selectively tracking target of visual cognition</span><div class="au">US Patent App. 16/541639 · 2019 <span class="chip p">Pending</span></div></div>
+    <div class="row"><span class="pt">Method and apparatus for detecting a garbage dumping action in real time on video surveillance system</span><div class="au">US Patent App. 16/401789 · 2019 <span class="chip p">Pending</span></div></div>
+
+    <div class="yhdr">2013 – 2016</div>
+    <div class="row"><a class="pt" href="https://patents.google.com/patent/US9418320B2">Apparatus and method for detecting object using PTZ camera</a><div class="au">US Patent US9418320B2 · 2016 <span class="chip g">Granted</span></div></div>
+    <div class="row"><span class="pt">영상에서의 전경 검출 및 방법</span><div class="au">KR Patent 10-2016-0008335 · 2016 <span class="chip p">Pending</span></div></div>
+    <div class="row"><span class="pt">감시 영상 분석 방법 및 시스템</span><div class="au">KR Patent 10-1513414 · 2015 <span class="chip g">Granted</span></div></div>
+    <div class="row"><span class="pt">비고정 카메라 영상에 대한 이중모드 SGM 기반의 이동체 고속 검출 방법</span><div class="au">KR Patent 10-1438451 · 2014 <span class="chip g">Granted</span></div></div>
+    <div class="row"><span class="pt">팬틸트줌 카메라를 이용한 물체 탐지 장치 및 방법</span><div class="au">KR Patent 10-1299237 · 2013 <span class="chip g">Granted</span></div></div>
+
+  </div></section>
+
+  <section id="domestic"><div class="wrap">
+    <h2>Domestic Publications <span style="font-weight:400;color:var(--muted);font-size:15px">· 국내 학회</span></h2><div class="hr"></div>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:8px">Korean-language papers, mostly co-authored with research interns.</p>
+    <div class="row"><span class="pt">한국어 장면 텍스트 인식에서 VLM의 시각적 역량 및 강건성 분석</span><div class="au">김소정, <b>윤기민</b>. <span class="vn">지능정보 및 제어 학술대회</span>, 2026</div></div>
+    <div class="row"><span class="pt">VLM의 한국어 장면 텍스트 이해를 위한 학습 데이터 구성과 CoT 추론 효과 분석</span><div class="au">방민재, 한주현, <b>윤기민</b>. <span class="vn">인공지능신호처리 학술대회</span>, 2025</div></div>
+    <div class="row"><span class="pt">분포 외 객체 특성을 고려한 도로 상황에서의 비정상 객체 탐지</span><div class="au">송정훈, <b>윤기민</b>. <span class="vn">인공지능신호처리 학술대회</span>, 2024</div></div>
+    <div class="row"><span class="pt">자기지도 학습과 데이터 선별 전략을 통한 오픈-셋 탐지기의 Fine-tuning</span><div class="au">조재호, <b>윤기민</b>. <span class="vn">한국컴퓨터종합학술대회 (KCC)</span>, 2024</div></div>
+    <div class="row"><span class="pt">멀티태스크 학습을 활용한 실세계 쓰러진 사람 탐지 기술 개발</span><div class="au">부원국, <b>윤기민</b>. <span class="vn">대한전자공학회 하계학술대회</span>, 2023</div></div>
+    <div class="row"><span class="pt">사람 자세상태 인식 향상을 위한 다중 작업 학습용 백본 모델 및 데이터셋 조합 연구</span><div class="au">김진아, <b>윤기민</b>. <span class="vn">한국컴퓨터종합학술대회 (KCC)</span>, 2022</div></div>
+    <div class="row"><span class="pt">다중 카메라 입력 인식 모델을 위한 배치 추론 및 이벤트 알람 전송 프레임워크</span><div class="au">송길재, <b>윤기민</b>. <span class="vn">한국컴퓨터종합학술대회 (KCC)</span>, 2022</div></div>
+  </div></section>
+
+  <section id="awards"><div class="wrap">
+    <h2>Awards &amp; Honors</h2><div class="hr"></div>
+    <ul class="awards">
+      <li>Outstanding Reviewer Award, <a href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee#all-outstanding-reviewer">CVPR 2025</a></li>
+      <li>National R&amp;D Excellence Top 100, Minister of Science and ICT, 2023
+        <span class="kr">2023년 국가연구개발 우수성과 100선 — 다양한 환경에 적용가능한 영상 이해 AI 핵심기술 개발과 시민 안전 분야 실증 및 사업화 (과제책임자: 배유석)</span></li>
+      <li>National Disaster Management R&amp;D Award, Minister of the Interior and Safety, 2023
+        <span class="kr">2023년 대한민국 재난안전 연구개발 행정안전부 장관상 — 영상 이해 AI 핵심기술을 통한 공공 CCTV 활용 시민 안전 실증 및 사업화 (과제책임자: 배유석)</span></li>
+      <li>Best Paper Award, ETRI, 2022</li>
+      <li>National R&amp;D Excellence Top 100, Minister of Science and ICT, 2021
+        <span class="kr">2021년 국가연구개발 우수성과 100선 — 사람의 행동을 정밀하게 이해하는 시각지능 핵심 원천기술 확보 및 실세계 적용 응용 기술 개발 (과제책임자: 배유석)</span></li>
+      <li>Best Paper Award, ETRI Journal, 2020</li>
+      <li>ETRI Representative Research — Grand Prize, ETRI, 2019
+        <span class="kr">2019년 ETRI 대표성과 대상 — 영상 내용을 사람처럼 이해하는 시각지능 원천기술 (과제책임자: 박종열)</span></li>
+      <li>National R&amp;D Excellence Top 100, Minister of Science and ICT, 2019
+        <span class="kr">2019년 국가연구개발 우수성과 100선 — 대규모 시각 데이터 실시간 분석 디스커버리 플랫폼 (DeepView) 개발 (과제책임자: 박종열)</span></li>
+      <li>New Employee Award, ETRI, 2019</li>
+      <li>Best Paper Award, CVPR Workshop, 2013</li>
+      <li><a href="http://www.songwon.or.kr/pc/main">Songwon Kim Young-Hwan Scholarship</a>, 2006–2013</li>
+      <li>Scholarship of EECS Department, Seoul National University, 2006</li>
+    </ul>
+  </div></section>
+
+  <section id="talks"><div class="wrap">
+    <h2>Invited Talks</h2><div class="hr"></div>
+    <div class="row"><span class="pt">공공 및 사회 문제 해결을 위한 AI — ETRI 시각지능연구실의 연구와 사례 소개</span><div class="au">가천대학교 인공지능학과 〈AI신기술특론〉 · 2026</div></div>
+    <div class="row"><span class="pt">공공 및 사회 문제 해결을 위한 AI</span><div class="au">충남대학교 영재원 · 2026</div></div>
+  </div></section>
+
+  <section id="service"><div class="wrap">
+    <h2>Academic Service</h2><div class="hr"></div>
+    <p class="blurb" style="margin-bottom:10px"><b>Conference Reviewer</b> &nbsp;—&nbsp; CVPR, ICCV, NeurIPS, WACV, BMVC</p>
+    <p class="blurb"><b>Journal Reviewer</b> &nbsp;—&nbsp; IEEE TPAMI, IEEE TNNLS, IEEE TIP, IEEE TVT, IEEE TMM, IEEE T-ITS, IEEE Access</p>
+  </div></section>
+
+  <footer><div class="wrap">© Kimin Yun · ETRI Visual Intelligence Lab &nbsp;·&nbsp; Template inspired by <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a> &amp; <a href="https://sangdooyun.github.io/">Sangdoo Yun</a></div></footer>
 </body>
-
 </html>

@@ -1,0 +1,810 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% Kimin Yun's LaTeX Template %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{kotex}
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\vspace{-\baselineskip}\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{xcolor,hyperref}
+% --- refined palette ---
+\definecolor{accent}{HTML}{2F4A6B}     % deep slate-blue (section titles, name)
+\definecolor{rulecol}{HTML}{C9D2DE}    % light rule between sections
+\definecolor{subtle}{HTML}{5B6470}     % muted text (subtitle)
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=accent,urlcolor=accent,
+            anchorcolor=accent,citecolor=accent}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+%
+% Usage: \makeheading{name}
+%
+% Place at top of document. It should be the first thing.
+\newcommand{\makeheading}[2]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+                {\Huge \bfseries \color{accent} #1}\\[0.18\baselineskip]%
+                {\normalsize \color{subtle} #2}\\[0.30\baselineskip]%
+                 {\color{accent}\rule{\columnwidth}{1.3pt}}%
+         \end{minipage}\vspace{0.2\baselineskip}}
+
+% The section headings
+%
+% Usage: \section{section name}
+%
+% Follow this section IMMEDIATELY with the first line of the section
+% text. Do not put whitespace in between. That is, do this:
+%
+%       \section{My Information}
+%       Here is my information.
+%
+% and NOT this:
+%
+%       \section{My Information}
+%
+%       Here is my information.
+%
+% Otherwise the top of the section header will not line up with the top
+% of the section. Of course, using a single comment character (%) on
+% empty lines allows for the function of the first example with the
+% readability of the second example.
+\renewcommand{\section}[2]%
+        {\pagebreak[2]\vspace{1.15\baselineskip}%
+         \phantomsection\addcontentsline{toc}{section}{#1}%
+         {\color{rulecol}\rule{\columnwidth}{0.5pt}}\par\vspace{0.40\baselineskip}%
+         \hspace{0in}%
+         \marginpar{\vspace{0.5pt}%
+         \raggedright \sffamily\bfseries\footnotesize \color{accent} #1}#2}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{compactitem}[#1]}
+        {\end{compactitem}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[2]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{윤기민 \textnormal{\large Kimin Yun}}{책임연구원, 한국전자통신연구원(ETRI) \quad·\quad 부교수, 과학기술연합대학원대학교(UST)\\[2pt]Principal Researcher, ETRI \quad·\quad Associate Professor, UST}
+
+\section{연락처 (Contact Information)}
+%
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.0in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+한국전자통신연구원 (ETRI) 인공지능창의연구소 시각지능연구실 \\
+과학기술연합대학원대학교 (UST) 인공지능전공 ETRI 스쿨 \\
+대전광역시 유성구 가정로 218 (34129) \\
+218 Gajeong-ro, Yuseong-gu, Daejeon, 34129, South Korea \\
+\\
+\textit{Webpage:} \href{https://kimin-yun.github.io}{https://kimin-yun.github.io} \\
+\textit{Google Scholar:} \href{https://scholar.google.co.kr/citations?user=fcVfLCkAAAAJ&hl=ko&citsig=AMstHGQjrQzMFrSSjkfQPG-JmXoXR8HNwQ}{Link} \\
+\textit{E-mail:} {kimin.yun@etri.re.kr} \\
+\end{tabular}
+
+
+%\section{Objective}
+%%
+%Placement in a postdoctoral researcher in
+
+\section{국적 (Citizenship)}
+%
+대한민국 (Republic of Korea)
+
+
+\section{연구 관심사 (Research Interests)}
+%
+컴퓨터 비전, 멀티모달 인공지능 모델, 실세계 AI 응용 \\
+Computer Vision, Multimodal AI Model, Real-world AI Application 
+
+\section{경력 (Career)}
+\href{https://etri.re.kr/eng/main/main.etri}{한국전자통신연구원 (Electronics and Telecommunications Research Institute, ETRI)}
+\begin{outerlist}
+\item[] 책임연구원 (Principal Researcher), 2026.3--현재
+\item[] 선임연구원 (Senior Researcher), 2019.3--2026.3
+\item[] 연구원 (Researcher), 2017.2--2019.3
+\end{outerlist}
+\vspace{0.5cm}
+\href{https://www.ust.ac.kr/eng/}{과학기술연합대학원대학교 (University of Science and Technology, UST)} 
+\begin{outerlist}
+\item[] 부교수 (Associate Professor), 2025.3--현재
+\end{outerlist}
+
+
+
+\section{학력 (Education)}
+%
+\href{http://www.useoul.edu/}{\textbf{서울대학교 (Seoul National University)}}, Seoul, Korea
+\begin{outerlist}
+
+\item[] 박사 (Ph.D.),
+        \href{http://ece.snu.ac.kr/en}
+             {전기·정보공학부 (Department of Electrical and Computer Engineering)}, 2017.2
+        \begin{innerlist}
+        		\item Thesis Title: \emph{Background-Centric Approach for Moving Object Detection in Moving Cameras}
+        		\item Adviser: {Prof. Jin Young Choi}
+        		\item Area of Study: Machine Learning and its application to computer vision area
+        \end{innerlist}
+
+\item[] 학사 (B.S.),
+        \href{http://ece.snu.ac.kr/en}
+             {전기공학부 (Department of Electrical Engineering)}, 2010.2
+        \begin{innerlist}
+            \item Thesis Title: \emph{Video Stabilization System for Real-time Video Surveillance System}
+            \item Graduated Cum Laude
+        \end{innerlist}
+
+\end{outerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{학술지 논문 (Journal Publications)} \begin{bibsection}
+
+% \item Hyung-Il Kim, \textbf{Kimin Yun}, Kangmin Bae, and Jinyoung Moon, 
+% 				``Background memory-assisted zero-shot video object segmentation for unmanned aerial and ground vehicles",
+% 				\emph{ETRI Journal}, 2023.  
+
+\item \textbf{Kimin Yun}$\dagger$, and Yuseok Bae, 
+				``Zero-Shot Anomaly Segmentation via Query-Level Uncertainty Analysis",
+				\emph{IEEE Access (SCIE)}, 2026. ($\dagger$ Corresponding author)
+
+\item Yu-Hyun Shin*, \textbf{Kimin Yun*,$\dagger$}, and Yuseok Bae, 
+				``Fast Adversarial Robustness Recovery against Model Parameter Exposure through Hopfield-type Neural ODEs",
+				\emph{ETRI Journal (SCIE)}, 2026 (accepted). (* Equal contribution, $\dagger$ Corresponding author)
+
+\item Sunoh Kim, \textbf{Kimin Yun}, and Daeho Um, 
+				``Finding Optimal Video Moment without Training: Gaussian Boundary Optimization for Weakly Supervised Video Grounding",
+				\emph{IEEE Transactions on Multimedia (SCIE)}, 2026.
+
+\item Jeonghyo Song, \textbf{Kimin Yun}, Dae Ung Jo, Jinyoung Kim, and Youngjoon Yoo, 
+				``Multi-Agent Visual Reasoning for Out-of-Distribution Detection in Complex Road Environments",
+				\emph{IEEE Access (SCIE)}, 2025.
+
+\item \textbf{Kimin Yun}, Hyung-Il Kim, Kangmin Bae, and Jinyoung Moon, 
+				``Background memory-assisted zero-shot video object segmentation for unmanned aerial and ground vehicles",
+				\emph{ETRI Journal (SCIE)}, 2023.  
+
+\item Hyung-Il Kim, \textbf{Kimin Yun}, and Yong Man Ro, 
+				``Face Shape-Guided Deep Feature Alignment for Face Recognition Robust to Face Misalignment",
+				\emph{IEEE Transactions on Biometrics, Behavior, and Identity Science}, 2022.  
+
+\item Geonu Lee, \textbf{Kimin Yun}, and Jungchan Cho, 
+				``Occluded Pedestrian-Attribute Recognition for Video Sensors Using Group Sparsity",
+				\emph{Sensors (SCIE)}, 2022.     
+
+\item Hyundong Jin, \textbf{Kimin Yun}, and Eunwoo Kim, 
+				``Gating Mechanism in Deep Neural Networks for Resource-Efficient Continual Learning",
+				\emph{IEEE Access (SCIE)}, 2022. 
+
+    \item \textbf{Kimin Yun}, and Jongwon Choi, 
+				``Adaptive Network Compression using Block Removal and Recycling Mechanisms",
+				\emph{Techart: Journal of Arts and Imaging Science}, 2021.  
+
+
+\item Youngwan Lee, Hyung-Il Kim, \textbf{Kimin Yun}, and Jinyoung Moon, 
+				``Diverse Temporal Aggregation and Depthwise Spatiotemporal Factorization for Efficient Video Classification",
+				\emph{IEEE Access (SCIE)}, 2021.  
+
+	    \item Geonu Lee, \textbf{Kimin Yun}, and Jungchan Cho, 
+				``Improved Human-Object Interaction Detection through On-the-Fly Stacked Generalization",
+				\emph{IEEE Access (SCIE)}, 2021.  
+
+		\item \textbf{Kimin Yun}, Jongyoul Park, and Jungchan Cho, 
+				``Robust Human Pose Estimation for Rotation via Self-Supervised Learning",
+				\emph{IEEE Access (SCIE)}, 2020.  
+
+		\item \textbf{Kimin Yun}, Yongjin Kwon, Sungchan Oh, Jinyoung Moon, and Jongyoul Park,
+				``Vision-based Garbage Dumping Action Detection for Real-World Surveillance Platform",
+				\emph{ETRI Journal (SCIE)}, 2019. (Best Paper Award)
+
+		\item  Sangdoo Yun, Jongwon Choi, Youngjoon Yoo, \textbf{Kimin Yun}, and Jin Young Choi
+				``Action-Driven Visual Object Tracking with Deep Reinforcement Learning",
+				\emph{IEEE Transactions on Neural Networks and Learning Systems (TNNLS) (SCIE)}, 2018.  
+
+
+		\item \textbf{Kimin Yun}, Jongin Lim, and Jin Young Choi,
+				``Scene Conditional Background Update for Moving Object Detection in a Moving Camera",
+				\emph{Pattern Recognition Letters (SCIE)}, 2017.  
+
+
+		\item  \textbf{Kimin Yun}, YoungJoon Yoo, and Jin Young Choi,
+				``Motion Interaction Field for Detection of Abnormal Interactions",
+				\emph{Machine Vision and Applications (SCIE)}, 2017.
+
+
+		\item Soo Wan Kim, Shimin Yin, \textbf{Kimin Yun}, and Jin Young Choi,
+				``Spatio-temporal weighting in local patches for direct estimation of camera motion in video stabilization",
+				\emph{Computer Vision and Image Understanding (SCIE)}, Vol.118, pp.71-83, Jan 2014.
+
+		\item Soo Wan Kim, \textbf{Kimin Yun}, Kwang Moo Yi, Sun Jung Kim and Jin Young Choi,
+				``Detection of moving objects with a moving camera using non-panoramic background model",
+				\emph{Machine Vision and Applications (SCIE)}, pages 1015-1028, Vol.24, Issue 5, July 2013.
+
+
+\end{bibsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{국제 학회 논문 (International Conference Publications)} \begin{bibsection}
+        \item Yujeong Oh, Taehoon Kim, Mingyu Lee, \textbf{Kimin Yun}$\dagger$, and Jongwon Choi$\dagger$, 
+					``Dynamic Augmentation Strategy Selection for Incremental Object Detection",
+					 \emph{International Conference on Pattern Recognition (\textbf{ICPR})}, 2026. ($\dagger$ Co-corresponding authors)
+
+        \item Minjae Bang*, Juhyeon Han*, Yuseok Bae, Sunok Kim$\dagger$, and \textbf{Kimin Yun}$\dagger$, 
+					``Reasoning-augmented Vision-Language Models for Improved Competency in Scene Text Recognition",
+					 \emph{International Conference on Consumer Electronics (\textbf{ICCE}) Asia}, 2025. (* Equal contribution, $\dagger$ Corresponding author)
+
+        \item \textbf{Kimin Yun}, Kangmin Bae, and Yuseok Bae, 
+				``Task-Adaptive Open-Set Detection with Prompt-Tuned Adaptors",
+				 \emph{IEEE International Conference on Advanced Visual and Signal-Based Systems (\textbf{AVSS})}, 2025.
+
+
+        \item Jeonghyo Song, \textbf{Kimin Yun}, DaeUng Jo, Jinyoung Kim, and Youngjoon Yoo, 
+				``CoT-Segmenter: Enhancing OOD Detection in Dense Road Scenes via Chain-of-Thought Reasoning",
+				  \emph{IEEE International Conference on Advanced Visual and Signal-Based Systems (\textbf{AVSS})}, 2025.
+
+
+        \item JinYoung Kim, DaeUng Jo, \textbf{Kimin Yun}, Jeonghyo Song, Youngjoon Yoo
+				``Distributional Uncertainty for Out-of-Distribution Detection",
+				  \emph{IEEE International Conference on Advanced Visual and Signal-Based Systems (\textbf{AVSS})}, 2025.
+
+
+        \item Hyung-Il Kim*, \textbf{Kimin Yun*}, Jun-Seok Yun, and Yuseok Bae, 
+        ``Task-Specific Adaptation of Segmentation Foundation Model via Prompt Learning", 
+        \emph{European Conference on Computer Vision Workshop on Out Of Distribution Generalization in Computer Vision (\textbf{ECCVW})}, 2024.
+        * equal contribution
+
+        \item \textbf{Kimin Yun}*, Jeonghoon Song*, and Yuseok Bae, 
+        ``Training-Free OOD Object Detection Leveraging Pre-trained Segmentation Model Competency", 
+        \emph{ The 15th International Conference on ICT Convergence (ICTC)}, 2024.
+        * equal contribution
+
+        \item Sunoh Kim, Taegil Ha, \textbf{Kimin Yun}, and Jin Young Choi, 
+				``SWAG-Net: Semantic Word-Aware Graph Network for Temporal Video Grounding",
+				 \emph{ACM International Conference on Information and Knowledge Management (\textbf{CIKM})}, 2022.
+
+     	\item Youngwan Lee, Joong-Won Hwang, Hyung-Il Kim, \textbf{Kimin Yun}, Yongjin Kwon, Yuseok Bae, and Sung Ju Hwang, 
+				``Localization Uncertainty Estimation for Anchor-Free Object Detection",
+				 \emph{European Conference on Computer Vision Workoshop on Uncertainty Quantification for Computer Vision (\textbf{ECCVW})}, 2022.
+
+
+	\item Kangmin Bae*, \textbf{Kimin Yun*}, Jungchan Cho, and Yuseok Bae
+				``The Dataset and Baseline Models to Detect Human Postural States Robustly against Irregular Postures",
+				 \emph{IEEE Int'l Conf on Advanced Video and Signal-based Surveillance (\textbf{AVSS})}, 2021.
+				 * equal contribution
+				 
+	\item Sunoh Kim, \textbf{Kimin Yun}, and Jin Young Choi, 
+				``Position-aware Location Regression Network for Temporal Video Grounding",
+				 \emph{IEEE Int'l Conf on Advanced Video and Signal-based Surveillance (\textbf{AVSS})}, 2021.
+
+	\item \textbf{Kimin Yun}, Hyungil Kim, Kangmin Bae, and Jongyoul Park
+				``Unsupervised Moving Object Detection through Background Models for PTZ Camera",
+				 \emph{International Conference on Pattern Recognition (\textbf{ICPR})}, 2020.
+				 
+	 \item Kangmin Bae*, \textbf{Kimin Yun*}, Hyungil Kim, Youngwan Lee, and Jongyoul Park
+				``Anti-Litter Surveillance based on Person Understanding via Multi-task Learning",
+				 \emph{British Machine Vision Conference (\textbf{BMVC})}, 2020. 
+				 * equal contribution
+				 
+	 \item Sunoh Kim, \textbf{Kimin Yun}, Jongyoul Park, and Jin Young Choi
+				``Skeleton-based Action Recognition of People Handling Objects",
+				 \emph{IEEE Winter Conference on Applications of Computer Vision (\textbf{WACV})}, 2019. 
+	\item Jeong-Min Seo, Haanju Yoo, \textbf{Kimin Yun}, Hyunil Kim, and Sang-Il Choi
+				``Behavior Recognition of a Person in a Daily Video Using Joint Position Information",
+				 \emph{IEEE International Conference on Artificial Intelligence and Knowledge Engineering Workshop on AI Bigdata Cloud Technologies}, 2018. 			 
+	\item  Sangdoo Yun, Jongwon Choi, Youngjoon Yoo, \textbf{Kimin Yun}, and Jin Young Choi,
+				``Action-Decision Network for Visual Tracking with Deep Reinforcement Learning",
+				 \emph{IEEE International Conference on Computer Vision and Pattern Recognition (\textbf{CVPR})}, 2017.
+	\item Byeongho Heo, \textbf{Kimin Yun} and Jin Young Choi,
+				``Appearance and Motion based Deep Learning Architecture for Moving Object Detection in Moving Camera",
+				 \emph{IEEE International Conference on Image Processing (\textbf{ICIP})}, 2017. 
+		\item  \textbf{Kimin Yun}, Jongin Lim, Sangdoo Yun, Soo Wan Kim, and Jin Young Choi,
+				``Attention-Inspired Moving Object Detection in Monocular Dashcam Videos",
+				 \emph{23rd International Conference on Pattern Recognition (\textbf{ICPR})}, 2016.
+		\item  Sangdoo Yun, \textbf{Kimin Yun}, Jongwon Choi, and Jin Young Choi,
+				``Density-Aware Pedestrian Proposal Networks for Robust People Detection in Crowded Scenes",
+				 \emph{International Workshop on Crowd Understanding in conjuction with ECCV (\textbf{ECCVW})}, 2016.
+		\item YoungJoon Yoo, \textbf{Kimin Yun}, Sangdoo Yun, JongHee Hong, Hawook Jeong, and Jin Young Choi,
+				``Visual Path Prediction in Complex Scenes with Crowded Moving Objects",
+				 \emph{IEEE Conference on Computer Vision and Pattern Recognition (\textbf{CVPR})}, 2016.
+		\item \textbf{Kimin Yun} and Jin Young Choi,
+				``Robust and Fast Moving Object Detection in a Non-Stationary Camera via Foreground Probability based Sampling",
+				 \emph{IEEE International Conference on Image Processing (\textbf{ICIP})}, 2015.
+		\item ByeongJu Lee, Jongwon Choi, \textbf{Kimin Yun}, and Jin Young Choi,
+				``Gradient Preserving RGB-to-Gray Conversion using Random Forest",
+				 \emph{IEEE International Conference on Image Processing (\textbf{ICIP})}, 2015.
+		\item ByeongJu Lee, \textbf{Kimin Yun}, Jongwon Choi, and Jin Young Choi,
+				``Robust Pan-Tilt-Zoom Tracking via Optimization Combining Motion Features and Appearance Correlations "`,
+				 \emph{IEEE International Conf. on Advanced Video and Signal based Surveillance (\textbf{AVSS})}, 2015.  
+		\item \textbf{Kimin Yun}, Jiyun Kim, Soo Wan Kim, Hawook Jeong, and Jin Young Choi,
+				``Learning with Adaptive Rate for Online Detection of Unusual Appearance",
+				\emph{10th International Symposium on Visual Computing (\textbf{ISVC})}, 2014.
+		\item  Tushar Sandhan, \textbf{Kimin Yun}, and Jin Young Choi,
+				``Proximity Clustering for Revealing a Semantically Dominant Class",
+				\emph{10th International Symposium on Visual Computing (\textbf{ISVC})}, 2014.
+		\item \textbf{Kimin Yun}, Hawook Jeong, Kwang Moo Yi, Soo Wan Kim, and Jin Young Choi,
+				``Motion Interaction Field for Accident Detection in Traffic Surveillance Video",
+				\emph{22nd International Conference on Pattern Recognition (\textbf{ICPR})}, 2014.
+        \item  Sangdoo Yun, \textbf{Kimin Yun}, Soo Wan Kim, Youngjoon Yoo and Jiyeoup Jeong.
+              ``Visual Surveillance Briefing System: Event-based Video Retrieval and Summarization",
+              \emph{IEEE International Conf. on Advanced Video and Signal based Surveillance (\textbf{AVSS})}, 2014.
+		\item Kwang Moo Yi, \textbf{Kimin Yun}, Soo Wan Kim, Hyung Jin Chang, Hawook Jeong, and Jin Young Choi,
+				``Detection of Moving Objects with Non-Stationary Cameras in 5.8ms: Bringing Motion Detection to your Mobile Device",
+				\emph{IEEE Int. workshop on Mobile vision, in conjunction with CVPR  (\textbf{CVPRW})}, 2013. (Best Paper Award)
+		\item \textbf{Kimin Yun}, Soo Wan Kim, and Jin Young Choi,
+				``Probabilistic Approach with Three Hierarchies of Motion Estimation for Video Stabilization",
+				\emph{IEEE Digital Image Computing: Techniques and Applications (\textbf{DICTA})}, 2011.
+				
+
+
+
+\end{bibsection}
+
+
+\section{국내 학회 논문 (Domestic Conference Publications)} \begin{bibsection}
+
+        \item 김소정, 배유석, \textbf{윤기민}, ``한국어 장면 텍스트 인식에서 VLM의 시각적 역량 및 강건성 분석", \emph{지능정보 및 제어 학술대회}, 2026.
+
+        \item 한주현, 방민재, 배유석, \textbf{윤기민}, ``VLM의 한국어 장면 텍스트 이해를 위한 학습 데이터 구성과 CoT 추론 효과 분석", \emph{인공지능신호처리 학술대회}, 2025.
+
+        \item 송정훈, \textbf{윤기민}, 배유석, "Anomalous Object Detection in Road Scenes based on  Out-of-Distribution object Characteristics", 인공지능 신호처리 학술대회, 2024
+        
+        \item 조재호, 배유석, 천용석, \textbf{윤기민}, "Fine-tuning Open-Set Detectors through Self-Supervised Learning and Data Selection Strategies: A Case Study in Banner Detection", 한국컴퓨터 종합 학술대회, 2024
+        
+        \item	부원국, 배강민, \textbf{윤기민}, 배유석, "Development of Real-world Fallen Person Detection using Multi-task Learning", 대한전자공학회 학술 대회 (하계), 2023
+        
+        \item	송길재, 김진아, 배강민, \textbf{윤기민}, 배유석, "A Framework for Effective Multi-camera Batch Inference and Event Alert", 한국컴퓨터 종합 학술대회, 2022
+        
+        \item	김진아, 송길재, 배강민, \textbf{윤기민}, 배유석, "Improvements on Real-world Domain and Person Understanding via Optimal Combination of Training Dataset and Model", 한국컴퓨터 종합 학술대회, 2022
+
+		\item \textbf{윤기민}, 박종열, "동적 카메라 동적 물체 탐지를 위한 세밀 배경 학습법",   \emph{제27회 영상처리 및 이해에 관한 워크샵 (\textbf{IPIU})},  2019.
+  
+		\item 서정민, 유한주, 최상일, \textbf{윤기민}, "행동 이해용 학습데이터 생성을 위한 어노테이션 도구 개발", 2018년도 한국통신학회 하계종합학술대회, 2018.
+  
+		\item 허병호, \textbf{윤기민}, 정지엽, 최진영, "외형 및 움직임 정보를 활용한 딥 러닝 기반의 동적 카메라 동적 물체 탐지 기술 ", \emph{제27회 영상처리 및 이해에 관한 워크샵 (\textbf{IPIU})}, 2017.
+  
+		\item 정지엽, 최종원, 이병주, \textbf{윤기민}, 최진영,
+				``가우시안 프로세스 회기 함수를 이용한 환경변화에 강인한 군중밀도 감지 알고리즘 개발",
+				 \emph{제27회 영상처리 및 이해에 관한 워크샵 (\textbf{IPIU})}, 2015.
+		\item \textbf{윤기민}, 윤상두, 최진영,
+				``움직임 상호 작용 모델을 통한 군중 폭력 상황 감지",
+				 \emph{대한전자공학회 하계종합학술대회}, 2015.
+		\item \textbf{윤기민}, 유영준, 김지윤, 최진영,
+				``실시간 자동 감시를 위한 비정상 이벤트 검출 통합 플랫폼",
+				 \emph{제 15회 전자정보통신 학술대회 (\textbf{CEIC})}, 2013.
+		\item \textbf{윤기민}, 김수완, 윤상두, 김지윤, 최진영,
+				``감시 영상의 사후 분석을 위한 이벤트 요약 및 분석 애니메이션 기술"`,
+				 \emph{대한전자공학회 정기총회 및 추계학술대회}, 2012.
+		\item \textbf{윤기민}, 김수완, 최진영,
+				``국부움직임의 확률적 정의를 통한 계층적인 영상안정화 기술",
+				\emph{제24회 영상처리 및 이해에 관한 워크샵 (\textbf{IPIU})}, 2012.
+		\item  김수완, 윤석민, \textbf{윤기민}, 최진영,
+				``광역 가중 LKT 방법을 이용한 비디오 안정화 기법",
+				\emph{정보 및 제어 학술대회 (\textbf{CICS})}, 2011. 
+		\item \textbf{윤기민}, 김수완, 최진영,
+				``적분 투영 이미지와 쏠림 현상 지표를 이용한 안정적인 비디오 안정화 기술",
+				\emph{대한전자공학회 정기총회 및 추계학술대회}, 2010.
+        \item 김수완, \textbf{윤기민}, 이현진, 최진영,
+              ``비디오 안정화를 위한 bit-plane 상에서의 강인한 국소 패치 매칭 기법",
+              \emph{대한전자공학회 하계종합학술대회}, 2010. 
+		
+
+
+\end{bibsection}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{특허 (Patents)} \begin{bibsection}
+
+        \item US Patent US12374094B2, Method and apparatus for feature transforming and processing based on artificial neural network (July, 2025, granted)
+
+        \item US Patent US20250181707A1, System and method for training deep learning networks resistant to adversarial attacks (June, 2025, pending)
+
+        \item US Patent US20250104383A1, Apparatus and method for recognizing image and prompt tuning method related to the same (March, 2025, pending)
+
+        \item US Patent US12142028B2, Object recognition apparatus and method based on environment matching (November, 2024, granted)
+
+       \item US Patent US12056909B2, Method and apparatus for face recognition robust to alignment status of the face (August, 2024, granted)
+
+       \item US Patent US11935296B2, Apparatus and method for online action detection (March, 2024, granted)
+
+        \item US Patent US20230059462A1, Method and apparatus for performing multi-task learning based on task similarity (February, 2023, pending)
+
+        \item US Patent US11527067B2, Electronic device, action instance generation method, and recording medium (December, 2022, granted)
+
+        \item US Patent US11380133B2, Domain adaptation-based object recognition apparatus and method (July, 2022, granted)
+    
+        \item US Patent 16/834500, Domain adaptation-based object recognition apparatus and method (October, 2020, pending)
+        
+        \item US Patent US10789470B2, System and method for detecting dynamic object (September, 2020, granted)
+
+        \item US Patent US10311579B2, Apparatus and method for detecting foreground in image (June, 2019, granted)
+
+		\item US Patent 16/541639, Smart glasses and method of selectively tracking target of visual cognition (August, 2019, pending)
+
+		\item US Patent 16/401789, Method and apparatus for detecting a garbage dumping action in real time on video surveillance system (May, 2019, pending)
+
+		\item US Patent 16/033152, SYSTEM AND METHOD FOR DETECTING DYNAMIC OBJECT (July, 2018, pending)
+
+		\item   US Patent US9418320 B2, Apparatus and method for detecting object using PTZ camera (August, 2016, granted)
+
+		\item  KOR Patent 10-2016-0008335 영상에서의 전경 검출 및 방법 (January, 2016, pending)
+
+		\item  KOR Patent 1015134140000 감시 영상 분석 방법 및 시스템 (April, 2015, granted)
+
+		\item  KOR Patent 1014384510000 비고정 카메라 영상에 대한 이중모드 SGM 기반의 이동체 고속 검출 방법 및 이를 위한 컴퓨터로 판독가능한 기록 매체 (September, 2014, granted)
+
+		\item  KOR Patent 1012992370000 팬틸트줌 카메라를 이용한 물체 탐지 장치 및 방법 (August, 2013, granted)
+
+
+
+
+
+\end{bibsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{수상 (Awards and Honors)}
+2023년 국가연구개발 우수성과 100선 (National R\&D Excellence Top 100, Minister of Science and ICT, South Korea), 참여연구원 \hfill \textbf{2023}
+\begin{outerlist}
+\item[] \textit{다양한 환경에 적용가능한 영상 이해 인공지능 핵심기술 개발과 시민 안전 분야 실증 및 사업화}%
+    \begin{innerlist}
+	    \item Project Leader: 배유석 (Yuseok Bae)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+
+2023년 대한민국 재난안전 연구개발 행정안전부 장관상 (National Disaster Management R\&D Award, Ministry of the Interior and Safety, South Korea), 참여연구원 \hfill \textbf{2023}
+\begin{outerlist}
+\item[] \textit{영상 이해 인공지능 핵심기술을 통한 공공 CCTV 활용 시민 안전 실증 및 사업화}%
+    \begin{innerlist}
+	    \item Project Leader: 배유석 (Yuseok Bae)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+
+ETRI 우수연구실적상, ETRI 저널 논문 부문  \hfill \textbf{2022}
+\vspace{0.5cm}
+
+2021년 국가연구개발 우수성과 100선  (National R\&D Excellence Top 100, Minister of Science and ICT, South Korea), 참여연구원 \hfill \textbf{2021}
+\begin{outerlist}
+\item[] \textit{사람의 행동을 정밀하게 이해하는 시각지능 핵심 원천 기술 확보 및 실세계 적용 응용 기술 개발}%
+    \begin{innerlist}
+	    \item Project Leader: 배유석 (Yuseok Bae)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+
+Best Paper Award, ETRI Journal, \hfill \textbf{2020}
+\begin{outerlist}
+\item[] \textit{Vision-based Garbage Dumping Action Detection for Real-World Surveillance Platform}%
+ \begin{innerlist}
+	    \item 주저자 (1저자)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+		
+
+ETRI 대표성과 (Representative Research) - 대상(Grand Prize), 참여연구원  \hfill \textbf{2020}
+\begin{outerlist}
+\item[] \textit{영상 내용을 사람처럼 이해하는 시각지능 원천 기술}%
+    \begin{innerlist}
+	    \item Project Leader: 박종열 (Jongyoul Park)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+		
+2019년 국가연구개발 우수성과 100선  (National R\&D Excellence Top 100, Minister of Science and ICT, South Korea), 참여연구원 \hfill \textbf{2019}
+\begin{outerlist}
+\item[] \textit{대규모 시각 데이터 실시간 분석 및 내용 이해를 위한 디스커버리 플랫폼 (DeepView:딥뷰) 개발}%
+    \begin{innerlist}
+	    \item Project Leader: 박종열 (Jongyoul Park)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+
+ETRI 신입직원상 (New Employee Award), \hfill \textbf{2019}
+\vspace{0.5cm}
+
+Best Paper Award, CVPR workshop, \hfill \textbf{2013}
+\begin{outerlist}
+\item[] \textit{Detection of Moving Objects with Non-Stationary Cameras in 5.8ms:Bringing Motion Detection to your Mobile Device}%
+    \begin{innerlist}
+	    \item Workshop on Mobile vision in conjunction with CVPR
+	    \item 공동저자 (2저자)
+	\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+
+송원김영환장학재단 장학생 (Songwon KimYoungHwan Scholarship), \hfill \textbf{2006--2013}
+\vspace{0.5cm}
+		
+	
+서울대학교 전기공학부 장학생, \hfill \textbf{2006}
+% \end{bibsection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{International School}
+% International Computer Vision Summer School (\textbf{ICVSS}) $-$ Registration, Recognition and Reconstruction in Images and Video, 11-16 July 2011, Sampieri-Sicily, Italy
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{교육 경력 (Teaching Experience)}
+{ETRI AI Academy}, Daejeon, Korea
+\begin{outerlist}
+\item[] \textit{전문교수 (Professor) }%
+		\begin{innerlist}
+				\item Human Pose and its Application \hfill \textbf{2020, 2021, 2022}
+				\item 범용 시각지능 모델의 이해 및 활용 실습 \hfill \textbf{2025 to Now}
+		\end{innerlist}
+\end{outerlist}
+\vspace{0.5cm}
+
+\href{http://www.dankook.ac.kr/en/web/international}{Dankook University},
+Yongin, Korea
+\begin{outerlist}
+\item[] \textit{Guest Lecturer (6 week)}%
+		\begin{innerlist}
+				\item Machine Vision \hfill \textbf{April. 2016 to June. 2016}
+		\end{innerlist}
+
+\end{outerlist}
+\vspace{0.5cm}
+\href{http://www.useoul.edu/}{Seoul National University},
+Seoul, Korea
+\begin{outerlist}
+\item[] \textit{Teaching Assistant}%
+
+		\begin{innerlist}
+				\item Convex Optimization
+                                                    \hfill \textbf{Sep. 2012 to Dec. 2012}
+
+				\item Introduction to Random Variables and Random Processes
+				\hfill \textbf{Mar. 2012 to Jun. 2012}
+
+		\end{innerlist}
+
+\end{outerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Position of Responsibilities}
+% Student Leader of Perception and Intelligence Lab, SNU (from Nov. 2013 to Oct. 2014)
+% \begin{innerlist}
+% 	\item Was in charge of project scheduling, job distributing, and coordinating feedback of research members.
+% \end{innerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{연구 프로젝트 (Research Project Experience)}
+
+\textit{Development of Artificial Intelligence Technology for Self-Improving Competency-Aware Learning Capabilities}%
+				\hfill \textbf{Mar. 2024 to now}
+\begin{innerlist}
+\item This work was supported by Institute of Information \& Communications Technology Planning \& Evaluation (IITP) grant funded by the Korea government (MSIT).
+\end{innerlist}
+\blankline
+
+
+\textit{Development of High Performance Visual BigData Discovery Platform for Large-Scale Realtime Data Analysis}%
+				\hfill \textbf{Feb. 2017 to Feb. 2024}
+\begin{innerlist}
+\item This work was supported by Institute of Information \& Communications Technology Planning \& Evaluation (IITP) grant funded by the Korea government (MSIT).
+
+\end{innerlist}
+\blankline
+
+\textit{Development of Previsional Intelligence based on Long-term Visual Memory Network}%
+
+				\hfill \textbf{Jan. 2020 to Feb. 2022}
+\begin{innerlist}
+\item This work was supported by Institute of Information \& Communications Technology Planning \& Evaluation (IITP) grant funded by the Korea government (MSIT).
+
+\end{innerlist}
+\blankline
+
+
+
+
+\textit{Deep Learning based Object detection and Recognition}%
+				\hfill \textbf{Apr. 2015 to Feb. 2016}
+\begin{innerlist}
+\item Sponsored by the SAIT Samsung Electronics. The goal of the project is developing detection and recognition algorithms in a driver's view. 
+
+\end{innerlist}
+
+\blankline
+
+\textit{Development of Predictive Visual Intelligence Technology}%
+				\hfill \textbf{Apr. 2014 to Feb. 2016}
+\begin{innerlist}
+\item Sponsored by the ICT R\&D program of MSIP/IITP. The goal of the project is developing predicting algorithms such as traffic flows.
+
+\end{innerlist}
+
+\blankline
+
+\textit{UAV Visual Surveillance System}%
+                \hfill \textbf{Apr. 2013 to Feb. 2015}
+\begin{innerlist}
+\item Sponsored by Samsung S1. The goal of the project is developing visual surveillance algorithms for unmanned aerial videos such as moving object detection in a non-stationary camera.
+\end{innerlist}
+
+\blankline
+
+\textit{Intelligent Visual Surveillance System}%
+				\hfill \textbf{Mar. 2010 to Aug. 2013}
+
+
+\begin{innerlist}
+\item Sponsored by Samsung Techwin Co., Ltd. The goal of the project is developing visual analysis algorithms, such as background subtraction, object tracking and behavior understanding, and integrated system.
+%
+%Especially I developed a speed boosting method for background subtraction, which speeded up computational time by four times without performance degradation. Our resesarch group and I developed an intelligent visual surveillance named as \textit{PIL-EYE system}. The system architecture is extensible and flexible that it improves algorithm developing time and algorithm performance.  Also I served as a project leader in charge of a project scheduling and job distributing. I coordinated feedback of research members and Samsung Techwin company.
+
+\end{innerlist}
+
+\section{학술지/학회 리뷰 (Reviewers)}
+CVPR, ICCV, WACV, BMVC
+
+(Outstanding reviewer awards at CVPR'25)
+
+IEEE Transactions on Neural Networks and Learning Systems
+
+IEEE Transactions on Image Processing
+
+IEEE Transactions on Vehicular Technology
+
+IEEE Transactions on Multimedia
+
+IEEE Transactions on Intelligent Transportation Systems.
+
+IEEE Access
+
+
+
+
+
+\section{최종 갱신일 (Last updated)} 
+November 3, 2025
+
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
