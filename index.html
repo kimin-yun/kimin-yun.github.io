@@ -112,6 +112,8 @@
     .pt{font-weight:700}
     .au{color:#444;font-size:14px;margin-top:2px}
     .au b{color:var(--ink)}
+    .au a.aul{color:inherit;border-bottom:1px dotted #b0b0b0}
+    .au a.aul:hover{color:var(--link);border-bottom-color:var(--link)}
     .vn{font-style:italic;color:var(--muted)}
     .lk{font-size:13.5px;margin-top:3px}
     .ba{color:#c0392b;font-weight:700}
@@ -433,6 +435,58 @@
       document.getElementById('ytClose').addEventListener('click',close);
       modal.addEventListener('click',function(e){if(e.target===modal)close();});
       document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    })();
+  </script>
+
+  <script>
+    /* Author homepage links — fill in name → URL below. Variant spellings of the
+       same person can map to the same URL (e.g. "DaeUng Jo" / "Dae Ung Jo").
+       Names not listed here are simply left as plain text. */
+    (function(){
+      var AUTHORS={
+        "Jin Young Choi":"https://pil.snu.ac.kr/",
+        "Hyung-Il Kim":"https://hikimece.github.io/vcl/people/professor/",
+        "Sangdoo Yun":"https://sangdooyun.github.io/",
+        "Sunoh Kim":"https://ducklab.dankook.ac.kr/index.html",
+        "Jongyoul Park":"https://vi.seoultech.ac.kr/index.do",
+        "Kangmin Bae":"https://sites.google.com/view/kmbae",
+        "Youngjoon Yoo":"https://sites.google.com/view/pilab",
+        "Jongwon Choi":"https://www.vilab.cau.ac.kr/",
+        "Jungchan Cho":"https://sites.google.com/view/visual-ai/",
+        "Kwang Moo Yi":"https://www.cs.ubc.ca/~kmyi/",
+        "Youngwan Lee":"https://youngwanlee.github.io/",
+        "Jongin Lim":"https://ljin0429.github.io/",
+        "DaeUng Jo":"https://pil.knu.ac.kr/",
+        "Dae Ung Jo":"https://pil.knu.ac.kr/",
+        "Daeho Um":"https://sites.google.com/view/uos-mlml",
+        "Eunwoo Kim":"https://airlab.cau.ac.kr/members/professor/",
+        "Byeongho Heo":"https://sites.google.com/view/byeongho-heo/home",
+        "Hyung Jin Chang":"https://cvlab-uob.github.io/",
+        "Yong Man Ro":"https://www.ivylab.kaist.ac.kr/ivylab-ivllab"
+      };
+      var keys=Object.keys(AUTHORS).sort(function(a,b){return b.length-a.length;});
+      if(!keys.length) return;
+      var esc=keys.map(function(k){return k.replace(/[.*+?^${}()|[\]\\-]/g,'\\$&');});
+      var re=new RegExp('(?<![A-Za-z-])('+esc.join('|')+')(?![A-Za-z-])','g');
+      document.querySelectorAll('.au').forEach(function(au){
+        Array.prototype.slice.call(au.childNodes).forEach(function(node){
+          if(node.nodeType!==3) return;           /* text nodes only — skips <b>Kimin Yun</b>, .vn, .chip */
+          var text=node.nodeValue;
+          re.lastIndex=0;
+          if(!re.test(text)) return;
+          re.lastIndex=0;
+          var frag=document.createDocumentFragment(),last=0,m;
+          while((m=re.exec(text))){
+            if(m.index>last) frag.appendChild(document.createTextNode(text.slice(last,m.index)));
+            var a=document.createElement('a');
+            a.href=AUTHORS[m[1]];a.target='_blank';a.rel='noopener';a.className='aul';a.textContent=m[1];
+            frag.appendChild(a);
+            last=m.index+m[1].length;
+          }
+          if(last<text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+          au.replaceChild(frag,node);
+        });
+      });
     })();
   </script>
 </body>
