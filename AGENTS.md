@@ -12,7 +12,13 @@ This repository contains Kimin Yun's static academic website, published from the
 
 ## Build, Test, and Development Commands
 
-There are no dependencies, build step, automated tests, or lint tasks. Preview changes from the repository root:
+Always synchronize the personal website before editing:
+
+```sh
+git pull --ff-only origin master
+```
+
+Resolve any synchronization issue before changing files. There are no dependencies, build step, automated tests, or lint tasks. Preview changes from the repository root:
 
 ```sh
 python3 -m http.server 8000
